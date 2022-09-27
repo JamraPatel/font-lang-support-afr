@@ -27,6 +27,8 @@ Planned updates:
  - Import language tags from file
  - Add arguments to filter script
  
+Language Tag Sets will contain differnt groups of Language Tags. Currently it only includes iso639-3-afr-all.txt which contains all language tags for African Languages irrespective of script.
+
  
  Under development:
   - Create script to create a template shaperglot profile using available data from Hyperglot. e.g. Create all mark attachment tests and language tag tests from known info in Hyperglot.
