@@ -1,3 +1,4 @@
+import base64
 from pprint import pprint
 import yaml, argparse
 
@@ -29,7 +30,7 @@ def sortProfiles(lang_tags, dataMap):
     missing_profiles.close()
     return profiles_true
 
-def extract_data(script, lang_tags, dataMap):
+def extract_data(script, report, lang_tags, dataMap):
     #Create output data files
     out = open("extracted_hyperglot_char_data.tsv", "w")
 
@@ -37,36 +38,67 @@ def extract_data(script, lang_tags, dataMap):
     extract_tags = sortProfiles(lang_tags, dataMap)
     #debug print(extract_tags)
 
-    for tag in extract_tags:
+    if report:
+        for tag in extract_tags:
 
-        for item in dataMap[tag]['orthographies']:
-            if item['script'] in (script):
-                out.write(dataMap[tag]['name'] + '\n')
-                out.write("Language Tag:\t" + tag + '\n')
-                if 'base' in item:
-                    out.write("Base:\t" + item['base'] + '\n')
-                else:
-                    out.write("Inherited Base:\t" + item['inherit'] +"\n")
-                if 'auxilary' in item:
-                    out.write("Auxiliary:\t" + item['auxiliary'] + '\n')
-                else:
-                    out.write("Auxiliary:\t None\n")
-                if 'marks' in item:
-                    out.write("Marks:\t" + item['marks'] + '\n\n')
-                else:
-                    out.write("Marks:\t None\n\n")
-                
-    out.close()
+            for item in dataMap[tag]['orthographies']:
+                if item['script'] in (script):
+                    out.write(dataMap[tag]['name'] + '\t')
+                    out.write(tag + '\t')
+                    if 'base' in item:
+                        base_string = item['base']
+                        base_tabs = base_string.replace(' ', '\t')
+                        out.write(base_tabs + '\t')
+                    else:
+                        out.write(item['inherit'] +"\t")
+                    if 'auxilary' in item:
+                        aux_string = item['auxiliary']
+                        aux_tabs = aux_string.replace(' ', '\t')
+                        out.write(aux_tabs + '\t')
+                    else:
+                        out.write("\t")
+                    if 'marks' in item:
+                        marks_string = item['marks']
+                        marks_tabs = marks_string.replace(' ', '\t')
+                        out.write(marks_tabs + '\n')
+                    else:
+                        out.write("\n")
+                    
+        out.close()
+    else:
+        for tag in extract_tags:
+
+            for item in dataMap[tag]['orthographies']:
+                if item['script'] in (script):
+                    out.write(dataMap[tag]['name'] + '\n')
+                    out.write("Language Tag:\t" + tag + '\n')
+                    if 'base' in item:
+                        out.write("Base:\t" + item['base'] + '\n')
+                    else:
+                        out.write("Inherited Base:\t" + item['inherit'] +"\n")
+                    if 'auxilary' in item:
+                        out.write("Auxiliary:\t" + item['auxiliary'] + '\n')
+                    else:
+                        out.write("Auxiliary:\t None\n")
+                    if 'marks' in item:
+                        out.write("Marks:\t" + item['marks'] + '\n\n')
+                    else:
+                        out.write("Marks:\t None\n\n")
+                    
+        out.close()
 
 
-def main(script):
+def main(script, report):
     lang_tags, dataMap = load_data()
-    extract_data(script, lang_tags, dataMap)
+    extract_data(script, report, lang_tags, dataMap)
     print('Script %s' % script)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    # Argument to filter retuned items based on writing system
     parser.add_argument('script', help='No argument for all scripts. Options: Arabic, Ge\\\'ez/Fidel, Latin', nargs='?', default='Arabic, Ge\'ez/Fidel, Latin')
+    # Argument to provide character data in a format for reporting
+    parser.add_argument('-r', dest='report', action='store_true', help='Change output format to reporting structure')
     args = parser.parse_args()
-    main(args.script)
+    main(args.script, args.report)
