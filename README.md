@@ -15,11 +15,6 @@ optional arguments:
   -h, --help  show this help message and exit
   -r          Change output format to reporting structure
 ```
-
-Planned updates:
- - Import language tags from file
- - Change script selector to OpenType language tag format
- 
  
  subset-hyperglot.py is a script to generate a subsetted Hyperglot YAML file with a susbset of languages
  
