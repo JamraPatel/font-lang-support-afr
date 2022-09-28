@@ -34,4 +34,4 @@ Language Tag Sets will contain differnt groups of Language Tags. Currently it on
   - Create script to create a template shaperglot profile using available data from Hyperglot. e.g. Create all mark attachment tests and language tag tests from known info in Hyperglot.
 
 # Requirements
- - * Python 3.8+
+* Python 3.8+
