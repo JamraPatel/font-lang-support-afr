@@ -11,28 +11,23 @@ aar
 aas
 aba
 abb
-abh
 abi
 abm
 abn
 abo
 abr
 abu
-abv
 acb
 acd
 ach
-acm
 acp
 acq
 acw
 acx
-acy
 acz
 ada
 add
 ade
-adf
 adh
 adj
 adq
@@ -60,15 +55,11 @@ ahm
 ahn
 ahp
 ahs
-aii
-aij
 aik
 aiw
 aiy
 aja
 ajg
-ajp
-ajt
 aju
 ajw
 aka
@@ -87,7 +78,6 @@ amb
 amf
 amh
 amo
-amw
 anc
 anf
 ank
@@ -96,13 +86,11 @@ anu
 anv
 anw
 any
-apc
 apd
 aqd
 aqg
 arb
 arq
-ars
 arv
 ary
 arz
@@ -118,9 +106,7 @@ atu
 auh
 auj
 aum
-auz
 avi
-avl
 avn
 avu
 awc
@@ -130,12 +116,9 @@ axk
 ayb
 aye
 ayg
-ayh
 ayi
 ayk
 ayl
-ayn
-ayp
 ayu
 azo
 bab
@@ -212,8 +195,6 @@ bgf
 bgj
 bgo
 bgu
-bhm
-bhn
 bhs
 bhy
 bib
@@ -228,7 +209,6 @@ biv
 biw
 biz
 bja
-bjf
 bjg
 bji
 bjo
@@ -430,7 +410,6 @@ ckq
 ckx
 cky
 cla
-cld
 cli
 cll
 cme
@@ -663,7 +642,6 @@ gdi
 gdk
 gdl
 gdm
-gdq
 gdu
 gea
 gec
@@ -773,9 +751,7 @@ hay
 hba
 hbb
 hbn
-hbo
 hdy
-heb
 hed
 heh
 hem
@@ -793,18 +769,14 @@ hna
 hnh
 hod
 hoe
-hoh
 hol
 hom
 hoo
 hor
 hoz
-hrt
-hss
 hts
 huc
 hum
-huy
 hwa
 hwo
 hya
@@ -908,7 +880,6 @@ juo
 juu
 juw
 jwi
-jye
 jyy
 kab
 kad
@@ -1044,7 +1015,6 @@ kpk
 kpl
 kpo
 kpz
-kqd
 kqg
 kqh
 kqk
@@ -1165,7 +1135,6 @@ lgm
 lgn
 lgq
 lgz
-lhs
 lia
 lie
 lig
@@ -1219,7 +1188,6 @@ lpx
 lri
 lrm
 lro
-lsd
 lse
 lsm
 lth
@@ -1325,7 +1293,6 @@ mhk
 mhm
 mho
 mhw
-mid
 mif
 mij
 mje
@@ -1424,7 +1391,6 @@ mym
 myo
 mys
 myx
-myz
 mzb
 mzd
 mzj
@@ -1723,7 +1689,6 @@ saa
 sad
 saf
 sak
-sam
 saq
 sav
 say
@@ -1767,7 +1732,6 @@ sho
 shq
 shr
 shu
-shv
 shw
 shy
 shz
@@ -1785,7 +1749,6 @@ skt
 sld
 slx
 smd
-smp
 smx
 sna
 snf
@@ -1813,10 +1776,8 @@ spy
 sqa
 sqh
 sqm
-sqt
 srr
 ssc
-ssh
 ssl
 ssn
 ssw
@@ -1847,7 +1808,6 @@ syc
 syi
 syk
 sym
-syn
 sys
 syx
 sze
@@ -1914,7 +1874,6 @@ tll
 tlo
 tma
 tmc
-tmr
 tms
 tmv
 tng
@@ -1930,9 +1889,7 @@ toz
 tpm
 tqq
 tqr
-trg
 trj
-tru
 tsa
 tsb
 tsc
@@ -2114,7 +2071,6 @@ yel
 yer
 yes
 yey
-yhd
 yko
 yky
 ymg
@@ -2127,7 +2083,6 @@ yom
 yor
 yot
 yre
-yud
 yul
 yun
 zag
@@ -2166,3 +2121,4 @@ zua
 zul
 zuy
 zwa
+afr
