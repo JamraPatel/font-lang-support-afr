@@ -3,7 +3,8 @@
 
 Scripts are still being developed.
 
-extract-hg-chardata.py is a script to extract character data from Hyperglot language profiles.
+## extract-hg-chardata.py
+This script to extract character data from Hyperglot language profiles.
 ```
 python extract-hg-chardata.py -h
 usage: extract-hg-chardata.py [-h] [-r] [script]
@@ -16,17 +17,44 @@ optional arguments:
   -r          Change output format to reporting structure
 ```
  
- subset-hyperglot.py is a script to generate a subsetted Hyperglot YAML file with a susbset of languages
+## subset-hyperglot.py
+This script to generate a subsetted Hyperglot YAML file with a susbset of languages
  
  Planned updates:
  - Import language tags from file
  - Add arguments to filter script
  
-Language Tag Sets will contain differnt groups of Language Tags. Currently it only includes iso639-3-afr-all.txt which contains all language tags for African Languages irrespective of script.
-
+ This script may be unnecessary in the long run.
  
- Under development:
-  - Create script to create a template shaperglot profile using available data from Hyperglot. e.g. Create all mark attachment tests and language tag tests from known info in Hyperglot.
+## generate-sg-profile.py
+This script simplifies generating shaperglot language profiles. Test data is input via a data file with simple strings containing the test parameters for any given type of test. generate-sg-profile.py automatically constructs a compatible shaperglot profile for the provided languages.
+
+Example test strings:
+```
+acz|features|mark|involves|hyperglot
+acz|features|smcp|present|
+acz|languagesystems|arab|
+ajg|features|mark|involves|hyperglot
+ajg|languagesystems|latn|dflt
+ajg|languagesystems|latn|YOR 
+ajg|mark2base|Á|
+ajg|mark2base|Á|smcp
+```
+
+
+ ```
+ usage: generate-sg-profile.py [-h] -i INFILE
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INFILE, --input INFILE
+                        .csv input file
+```
+ 
+Language Tag Sets will contain different groups of Language Tags. Currently it only includes iso639-3-afr-all.txt which contains all language tags for African Languages irrespective of script.
+
+
 
 # Requirements
 * Python 3.8+
+* pyyaml
