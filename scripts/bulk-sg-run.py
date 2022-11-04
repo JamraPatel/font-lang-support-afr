@@ -85,31 +85,39 @@ def summarize(tag, fontname, results):
             summary.write(fontname + "," + tag + ",profile missing,1\n")
 
 
+def check_one(font, available_tags):
+    checker = Checker(font)
+    print(f"analyzing {font}")
+    results_for_font = {}
+    for tag, item in available_tags.items():
+        results_for_font[tag] = checker.check(gflangs[item])
+    return results_for_font
+
+
 def main():
     fonts = glob.glob("./fonts/*.ttf")
 
     tag_results = {}
-    new_collection = []
-    num_tags = len(afr_tags)
     missing_tags = []
+    available_tags = {}
+
+    for tag in afr_tags:
+        if isoconv.get(tag) is not None:
+            item = isoconv.get(tag) + "_Latn"
+        else:
+            item = tag + "_Latn"
+        if item not in gflangs:
+            missing_tags.append(item)
+            continue
+        available_tags[tag] = item
 
     for font in fonts:
-        checker = Checker(font)
+        font_results = check_one(font, available_tags)
         fontname = Path(font).stem
-        print(f"analyzing {font}")
-        for tag in afr_tags:
-            if isoconv.get(tag) is not None:
-                item = isoconv.get(tag) + "_Latn"
-            else:
-                item = tag + "_Latn"
-            if item not in gflangs:
-                missing_tags.append(item)
-                continue
-
-            this_results = checker.check(gflangs[item])
-            summarize(item, fontname, this_results)
-            tag_results.setdefault(item, {})[fontname] = [
-                message for code, message in this_results if code != Result.PASS
+        for tag, this_tag_results in font_results.items():
+            summarize(tag, fontname, this_tag_results)
+            tag_results.setdefault(tag, {})[fontname] = [
+                message for code, message in this_tag_results if code != Result.PASS
             ]
 
     tag_results["Missing GFLang Data"] = missing_tags
