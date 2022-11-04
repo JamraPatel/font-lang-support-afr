@@ -2,7 +2,9 @@ import os
 import subprocess
 import glob
 import yaml
+from multiprocessing import Pool
 from pathlib import Path
+from itertools import repeat
 
 from shaperglot.languages import Languages
 from shaperglot.checker import Checker
@@ -111,8 +113,10 @@ def main():
             continue
         available_tags[tag] = item
 
-    for font in fonts:
-        font_results = check_one(font, available_tags)
+    args = zip(fonts, repeat(available_tags))
+    with Pool() as p:
+        all_font_results = p.starmap(check_one, args)
+    for font, font_results in zip(fonts, all_font_results):
         fontname = Path(font).stem
         for tag, this_tag_results in font_results.items():
             summarize(tag, fontname, this_tag_results)
