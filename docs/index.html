@@ -49,7 +49,9 @@
 
   <script>
     let summary = [];
+    let test = [];
     let missing_tags = [];
+
     const P0 = ['swa', 'hau'];
     const P1 = ['amh', 'zul', 'yor', 'afr'];
     const P2 = ['ibo', 'pcm', 'orm', 'xho', 'som', 'aka'];
@@ -60,23 +62,21 @@
     async function fontOverviewJSON() {
       const response = await fetch('./afr_tag_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
       const results = await response.json(); 
-      console.log(results)
+      //console.log(results)
       return results;
-    }
+    };
 
     fontOverviewJSON().then(results => {summary = results.slice(0, results.length -2), loadTags(results[[results.length - 2]]), make_overview(summary, ctx), loadTime(results[results.length - 1])});
-
-
-    //fontOverviewJSON().then(results => {summary = results});
+ 
 
     function loadTime(data) {
         document.getElementById('time').innerHTML = data.Timestamp;
-    }
+    };
 
     function loadTags(data) {
         let tagArray = data["Missing GFLang Data"];
         document.getElementById('tags').innerText = tagArray.toString().replace(/,/g, " ");
-    }
+    };
 
     let selectLevel = document.getElementById("selectLevel");
     let alphabet = ['P0', 'P1', 'P2', 'PX'];
@@ -102,7 +102,7 @@
       } else if (supportLevel == 'PX') {
         filtered = summary.filter(level => PX.includes(level.tag));
       };
-      console.log(filtered)
+      //console.log(filtered)
       let subset = filtered.sort((a, b) => (a.font > b.font) ? 1: -1);
       tagOverviewChart.destroy();
       make_overview(subset, ctx);
@@ -212,7 +212,6 @@
                     }] = activePoints;
                     let sortedPassing = summarySort[index].pass.fonts.sort((a, b) => (a > b) ? 1: -1);
                     let sortedFailing = summarySort[index].fail.fonts.sort((a, b) => (a > b) ? 1: -1);
-                    console.log();
                     document.getElementById('errors').innerHTML = ("Passing Fonts:\n" + sortedPassing.toString().replace(/,/g, "\n")+"\n\nFailing Fonts:\n"+sortedFailing.toString().replace(/,/g, "\n"));
                     }
             }
