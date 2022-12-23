@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
+  </head>
+
+
+  <script>
+
+
+  </script>
+
+  <body>
+
+    <div class="sidebar">
+        <div class="nav"><a href="./index.html">Dashboard &#62;</a></div>
+        <div class="nav"><a href="./font-summary.html">Font Results &#62;</a></div>
+        <div class="nav"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
+        <div class="nav"><a href="./glyph-analysis.html">Glyph Analysis &#62;</a></div>
+        <div class="nav active"><a href="./repairing-fonts.html">&#60; Repairing Fonts</a></div>
+        <div class="nav sub"><a href="#Intro">Introduction</a></div>
+        <div class="nav sub"><a href="">Interpreting Results</a></div>
+        <div class="nav sub"><a href="">Glyph Variants</a></div>
+
+
+    </div>
+
+    <div class="header"><h1>Google Fonts Pan-African Latin Gap Analysis</h1></div>
+
+    <div class="body-text">
+        <h2>Repairing Fonts</h2>
+        <h3 id="intro">Introduction</h3>
+        <div  class="card">
+        <p>This results in this reporting tool are based on analysis performed using <a href="https://github.com/simoncozens/shaperglot"><i>shaperglot</i></a>. <i>Shaperglot</i> works by processing font binaries through an instance of harfbuzz to ensure that a font not only supports a given language's characterset but also renders it appropriately on-screen. Since <i>shaperglot</i> is analyzing binary font files it is important to be aware that the errors being reported for a given font may not necessarily be evident in the font source but may be an artifact of the font exporting process. If errors cannot be confirmed in the source file then it is worth looking into how the fonts are exported.</p>
+        </div>
+
+        <h3>Interpreting Results</h3>
+        <div class="card">
+        <p>Support for Pan-African Latin language support is determined by evaluating the following criteria. The data shown in this reporting tool is a truncated version of the full error message reported by <i>shaperglot</i>. See sections below for details about errors and how to remedy these errors in a font.</p>
+        <ul>
+            <li>Missing Bases</li>
+            <li>Missing Marks</li>
+            <li>Orphaned Marks</li>
+            <li>Un-encoded Glyph Variants</li>
+            <li>Missing OT locl Feature</li>
+            <li>Missing Small-Caps</li>
+        </ul>
+        <p>The Font Results page reports the aggregated errors for all language tags tested. When a data row is selected the combined errors will be reported in the sidebar. Pressing the <i>Breakdown</i> button will breakout the errors for the selected font by language tag. Selecting any given data row will then report the specific errors for that language tag in the side bar. In both cases the error details can be copied to your clipboard.</p>
+        </div>
+        <h3>Missing Bases/Missing Marks</h3>
+        <div class="card">
+            <p>The missing bases ans missing marks test is fairly straightforward. The test compares the glyph set in a font against the exemplar character sets defined in <a href="https://github.com/googlefonts/lang">GF Languages</a> for a given language tag. If the glyph is missing in the font it is reported as an error. Missing marks will be shown attached to a dotted circle for cleaner presentation, however the glyph that needs to be added to a failing font is the combining mark itself.</p>
+            <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
+            <li>Some base glyphs were missing: <i>base glyphs...</i></li>
+            <li>Some mark glyphs were missing: <i>mark glyphs...</i></li>
+            <p><b>Remedy: </b>Add missing glyphs to font. If the glyphs are found to be in the font source file check to see if any subsetting routines are used to export the font. If so, ensure that the required glyphs are not excluded from the export.</p>
+        </div>
+        <h3>Orphaned Marks</h3>
+        <div class="card">
+            <p>The orphaned marks test checks to see if necessary marks for a langauge attach to a base glyph via the OT mark feature. If the mark fails to attach to the base glyph it is reported as an error. If either the base or mark are missing in the font mark attachment cannot be tested. In this case, the error will be reported as "*see missing bases/marks*". </p>
+            <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
+            <li>Shaper didn't attach <i>mark glyph</i> to <i>base glyph</i></li>
+            <li>Shaper produced a .notdef</li>
+            <p><b>Remedy: </b>Ensure that the tested base and mark glyphs have corresponding anchors defined. For "*see missing bases/marks*" errors first add all the necessary glyphs to the font and verify that corresponding anchors are present.</p>
+        </div>
+        <h3>Un-encoded Glyph Variants/Missing OT locl Feature</h3>
+        <div class="card">
+            <p></p>
+        </div>
+        <h3>Missing Small-Caps</h3>
+        <div class="card">
+            <p></p>
+        </div>
+    </div>
+
+
+    </body>
+</html>

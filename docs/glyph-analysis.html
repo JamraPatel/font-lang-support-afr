@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
+  </head>
+
+  <body>
+
+    <div class="sidebar">
+        <div class="nav"><a href="./index.html">Dashboard &#62;</a></div>
+        <div class="nav"><a href="./font-summary.html">Font Results &#62;</a></div>
+        <div class="nav"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
+        <div class="nav active"><a href="./glyph-analysis.html">&#60; Glyph Analysis</a></div>
+        <div class="nav"><a href="./repairing-fonts.html">Repairing Fonts &#62;</a></div>
+
+    </div>
+
+    <div class="header"><h1>Google Fonts Pan-African Latin Gap Analysis</h1></div>
+    <div class="body-text">
+      <h2>Pan-African Latin GF Glyph Set</h2>
+      <p>Data extracted from gflanguages profiles</p>
+      <p class="card" id="glyphs"></p>
+    </div>
+    <div class="body-text">
+        <h2>Glyph Set Analysis</h2>
+        <p>This report looks at the minimal glyphs sets needed to achieve various levels of Pan-African Language support. Since there is a lot of overlap in the necessary glyphs required to support various languages this report helps indentify the minimal gylph sets needed in all fonts to get the broadest support. Values of zero on the chart mean that there is insufficient overlap across languages to meet that coverage threshold. It is worth mentioning that adding glyphs will only make fonts pass the missing bases and missing marks shaperglot tests. Other shaping errors would need to be remedied for fonts to be fully compliant.</p>
+    </div>
+
+    <div class="body-text">
+      <h3>Base Glyphs Breakdown by Language Support Level</h3>
+    </div>
+    <div id="overview">
+      <canvas id="baseCoverageChart"></canvas>
+    </div>
+    <div class="body-text">
+      <p class="card" id="baseAnalysis"></p>
+    </div>
+    
+    <div class="body-text">
+      <h3>Combining Mark Glyphs Breakdown by Language Support Level</h3>
+    </div>
+    <div id="overview">
+      <canvas id="markCoverageChart"></canvas>
+    </div>
+    <div class="body-text">
+      <p class="card" id="markAnalysis"></p>
+    </div>
+
+    <div class="body-text">
+      <h3>Base/Mark Pairs Breakdown by Language Support Level</h3>
+    </div>
+    <div id="overview">
+      <canvas id="pairCoverageChart"></canvas>
+    </div>
+    <div class="body-text">
+      <p class="card" id="pairAnalysis"></p>
+    </div>
+
+  <script>
+    let base_coverage = [];
+    let mark_coverage = [];
+    let pair_coverage = [];
+    let totalTags;
+    let summary = [];
+    let missing_tags = [];
+
+    const ctx = document.getElementById('baseCoverageChart').getContext('2d');
+    const ctx2 = document.getElementById('pairCoverageChart').getContext('2d');    
+    const ctx3 = document.getElementById('markCoverageChart').getContext('2d');
+
+
+
+    async function glyphSetJSON() {
+      const responseGS = await fetch('./glyph_set.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
+      const resultsGS = await responseGS.json();      
+      return resultsGS;
+    }
+
+    glyphSetJSON().then(resultsGS => {requiredBases = resultsGS[0].join(" "), requiredMarks = resultsGS[1].join(" "), document.getElementById('glyphs').innerText = requiredBases+"\n\n"+requiredMarks});
+
+    async function glyphCoverageJSON() {
+      const responseGC = await fetch('./glyph_coverage.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
+      const resultsGC = await responseGC.json();      
+      return resultsGC;
+    }
+
+    glyphCoverageJSON().then(resultsGC => {console.log(resultsGC.length), totalTags = resultsGC[0], base_coverage = resultsGC[1], mark_coverage = resultsGC[2], pair_coverage = resultsGC[3], base_analysis(totalTags, base_coverage, ctx), pair_analysis(totalTags, pair_coverage, ctx2), mark_analysis(totalTags, mark_coverage, ctx3)
+    });
+
+    
+
+    function transformCounts(tagCount, factor) {
+      transform = tagCount - tagCount * factor
+
+      return transform;
+    };
+
+    function loadGlyphAnalysis(hundred, ninety, eighty, seventy, sixty, fifty, forty, thirty, twenty, ten, zero, field){
+      
+      if (hundred[0].length != 0) {
+        document.getElementById(field).innerText += "100% Coverage:\n"+hundred[0].join(" ")
+      };
+      if (ninety[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n90% Coverage:\n"+ninety[0].join(" ")
+      };
+      if (eighty[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n80% Coverage:\n"+eighty[0].join(" ")
+      };
+      if (seventy[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n70% Coverage:\n"+seventy[0].join(" ")
+      };
+      if (sixty[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n60% Coverage:\n"+sixty[0].join(" ")
+      };
+      if (fifty[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n50% Coverage:\n"+fifty[0].join(" ")
+      };
+      if (forty[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n40% Coverage:\n"+forty[0].join(" ")
+      };
+      if (thirty[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n30% Coverage:\n"+thirty[0].join(" ")
+      };
+      if (twenty[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n20% Coverage:\n"+twenty[0].join(" ")
+      };
+      if (ten[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n10% Coverage:\n"+ten[0].join(" ")
+      };
+      if (zero[0].length != 0) {
+        document.getElementById(field).innerText += "\n\n0% Coverage:\n"+zero[0].join(" ")
+      };
+
+
+    };
+
+
+
+
+    function base_analysis(tagCount, data, ctx) {
+
+
+
+        let hundred = data.map(data => Object.keys(data).filter(key => data[key].length > 0));
+        let ninety = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.9)));
+        let eighty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.8)));
+        let seventy = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.7)));
+        let sixty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.6)));
+        let fifty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.5)));
+        let forty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.4)));
+        let thirty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.3)));
+        let twenty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.2)));
+        let ten = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.1)));
+        let zero = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0)));
+
+        loadGlyphAnalysis(hundred, ninety, eighty, seventy, sixty, fifty, forty, thirty, twenty, ten, zero, 'baseAnalysis');
+
+  
+        baseCoverageChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                datasets: [{
+                  data: [zero[0].length, ten[0].length, twenty[0].length, thirty[0].length, forty[0].length, fifty[0].length, sixty[0].length, seventy[0].length, eighty[0].length, ninety[0].length, hundred[0].length],
+                backgroundColor: '#3288bdFF',
+                pointBorderColor:'#25344e',
+                stepped: true,
+                pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  tooltip: {
+                      enabled: true
+                  },
+                  title: {
+                      display: true,
+                      text: 'Base Glyph Sets vs Compliance'
+                  },
+                  legend: {
+                    display: false
+                  }
+                },
+                scales: {
+                  x: {
+                    title: {
+                      display: true,
+                      text: '% of Languages Covered'
+                    }
+                  },
+                  y: {
+                    title: {
+                      display: true,
+                      text: '# of Base Glyphs'
+                    }
+                  }
+                }
+            }
+        });
+          
+        baseCoverageChart.canvas.parentNode.style.height = '400px';
+        baseCoverageChart.update();
+        //resizeChart(glyphCoverageChart, summarySort);
+    };
+
+
+
+    function pair_analysis(tagCount, data, ctx2) {
+
+      let hundred = data.map(data => Object.keys(data).filter(key => data[key].length > 0));
+      let ninety = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.9)));
+      let eighty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.8)));
+      let seventy = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.7)));
+      let sixty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.6)));
+      let fifty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.5)));
+      let forty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.4)));
+      let thirty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.3)));
+      let twenty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.2)));
+      let ten = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.1)));
+      let zero = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0)));
+
+      loadGlyphAnalysis(hundred, ninety, eighty, seventy, sixty, fifty, forty, thirty, twenty, ten, zero, 'pairAnalysis');
+
+      pairCoverageChart = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+              datasets: [{
+                data: [zero[0].length, ten[0].length, twenty[0].length, thirty[0].length, forty[0].length, fifty[0].length, sixty[0].length, seventy[0].length, eighty[0].length, ninety[0].length, hundred[0].length],
+              backgroundColor: '#e6f598FF',
+              pointBorderColor: '#25344e',
+              stepped: true,
+              pointRadius: 5
+              }]
+          },
+          options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+              tooltip: {
+                  enabled: true
+              },
+              title: {
+                  display: true,
+                  text: 'Base/Mark Pairs vs Compliance'
+              },
+              legend: {
+                    display: false
+                  }
+              },
+              scales: {
+                  x: {
+                    title: {
+                      display: true,
+                      text: '% of Languages Covered'
+                    }
+                  },
+                  y: {
+                    title: {
+                      display: true,
+                      text: '# of Base/Mark Pairs'
+                    }
+                  }
+                }
+          }
+      });
+      pairCoverageChart.canvas.parentNode.style.height = '400px';
+      pairCoverageChart.update();
+      };
+   
+
+
+      function mark_analysis(tagCount, data, ctx3) {
+
+        let hundred = data.map(data => Object.keys(data).filter(key => data[key].length > 0));
+        let ninety = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.9)));
+        let eighty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.8)));
+        let seventy = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.7)));
+        let sixty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.6)));
+        let fifty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.5)));
+        let forty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.4)));
+        let thirty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.3)));
+        let twenty = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.2)));
+        let ten = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0.1)));
+        let zero = data.map(data => Object.keys(data).filter(key => data[key].length > transformCounts(tagCount, 0)));
+
+        loadGlyphAnalysis(hundred, ninety, eighty, seventy, sixty, fifty, forty, thirty, twenty, ten, zero, 'markAnalysis');
+
+        markCoverageChart = new Chart(ctx3, {
+            type: 'line',
+            data: {
+              labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                datasets: [{
+                  data: [zero[0].length, ten[0].length, twenty[0].length, thirty[0].length, forty[0].length, fifty[0].length, sixty[0].length, seventy[0].length, eighty[0].length, ninety[0].length, hundred[0].length],
+                backgroundColor: '#99d594FF',
+                pointBorderColor: '#25344e',
+                stepped: true,
+                pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                tooltip: {
+                    enabled: true
+                },
+                title: {
+                    display: true,
+                    text: 'Mark Glyph Sets vs Compliance'
+                },
+                legend: {
+                    display: false
+                  }
+                },
+                scales: {
+                  x: {
+                    title: {
+                      display: true,
+                      text: '% of Languages Covered'
+                    }
+                  },
+                  y: {
+                    title: {
+                      display: true,
+                      text: '# of Combining Mark Glyphs'
+                    }
+                  }
+                }
+            }
+        });
+        markCoverageChart.canvas.parentNode.style.height = '400px';
+        markCoverageChart.update();
+        };
+            
+
+
+  </script>
+
+
+  </body>
+</html>

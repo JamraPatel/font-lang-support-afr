@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
+  </head>
+  
+
+  <body>
+
+    <div class="sidebar">
+      <div class="nav"><a href="./index.html">Dashboard &#62;</a></div>
+      <div class="nav"><a href="./font-summary.html">&#60; Font Results</a></div>
+      <div class="nav active"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
+      <div id="insight">
+        <span id="overviewSelect">Choose Report</span> 
+        <input type="radio" name="chooseReport" value="chooseApples" checked>
+        <label for="chooseApples">Apples</label>
+        <input type="radio" name="chooseReport" value="chooseBananas">
+        <label for="chooseBananas">Bananas</label>
+        <button id="page2">Page 2</button>
+        <button id="page1">Page 1</button>
+        <textarea name="errors" id="errors"></textarea>
+        <button id="copy">Copy Errors</button>
+        <button id="downloadApples">Download Apples .tsv</button>
+        <button id="downloadBananas">Download Bananas .tsv</button>
+      </div>
+      <div class="nav"><a href="./glyph-analysis.html">Glyph Analysis &#62;</a></div>
+      <div class="nav"><a href="./repairing-fonts.html">Repairing Fonts &#62;</a></div>
+    </div>
+      
+    <div class="header"><h1>Google Fonts Pan-African Latin Gap Analysis</h1></div>
+
+    <div class="body-text">
+        <h2>Apples/Bananas</h2>
+        <p>This report highlights fonts that require minimal (apples) and extensive (bananas) effort to repair. Apples are fonts that can be easily repaired without the original foundry. It focuses on fonts that only have orphaned mark failures and missing OT locl features. Bananas are fonts that require a alot of new characters to be designed and would likely require involvement from the origin foundry.</p>
+    </div>
+   
+
+    <div id="apples">
+        <canvas id="applesChart"></canvas>
+    </div>
+    <div id="bananas">
+      <canvas id="bananasChart"></canvas>
+  </div>
+
+
+
+  <script>
+    let data1 = [];
+    let data2 = [];
+    let applesChart;
+    let bananasChart;
+
+
+    const ctx = document.getElementById('applesChart').getContext('2d');
+    const ctx2 = document.getElementById('bananasChart').getContext('2d');
+    document.getElementById('downloadBananas').style.display = "none";
+   
+    async function fontAnalysisJSON1() {
+      const response1 = await fetch('./afr_lang_summary_1.json', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const results1 = await response1.json(); 
+      //console.log(results1);
+      return results1;
+    }
+
+    fontAnalysisJSON1().then(results1 => {make_apples(results1, ctx), make_bananas(results1, ctx2), data1 = results1});
+
+    async function fontAnalysisJSON2() {
+      const response2 = await fetch('./afr_lang_summary_2.json', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const results2 = await response2.json(); 
+      //console.log(results2);
+
+      return results2;
+    }
+
+    fontAnalysisJSON2().then(results2 => {data2 = results2});
+
+
+
+    document.getElementById('bananas').style.display = "none";
+
+    const buttons = document.querySelectorAll("input[type='radio']");
+
+
+    function resizeChart(chart, data) {
+      let uniqueEntries;
+      uniqueEntries = [...new Set(data.map((fonts) => fonts.font))];
+      let count = uniqueEntries.length;
+      let divHeight = String(count * 20 + 100) + 'px';
+      chart.canvas.parentNode.style.height = divHeight;
+    };
+
+    buttons.forEach(button => {
+      button.onclick = () => {
+        if (button.checked) {
+          if (button.value == 'chooseApples') {
+            document.getElementById('apples').style.display = "block";
+            document.getElementById('bananas').style.display = "none";
+            document.getElementById('downloadApples').style.display = "block";
+            document.getElementById('downloadBananas').style.display = "none";
+            document.location='#apples'
+          } else if (button.value == 'chooseBananas') {
+            document.getElementById('apples').style.display = "none";
+            document.getElementById('bananas').style.display = "block";
+            document.getElementById('downloadApples').style.display = "none";
+            document.getElementById('downloadBananas').style.display = "block";
+            document.location='#bananas'
+
+          }
+        }
+        document.getElementById('errors').innerText = "";
+      }
+    });
+
+
+    document.getElementById("copy").onclick = function() {
+      let content = document.getElementById("errors").value;
+      navigator.clipboard.writeText(content).then(() => {
+              alert('Errors copied to clipboard');
+            });
+    };
+
+    document.getElementById("page1").onclick = function() {
+      let selection = document.getElementsByName('chooseReport');
+
+      if (selection[0].checked) {
+        applesChart.destroy();
+        make_apples(data1, ctx)
+      } else if (selection[1].checked) {
+        bananasChart.destroy();
+        make_bananas(data1, ctx2)
+      };
+
+    };
+
+    document.getElementById("page2").onclick = function() {
+      let selection = document.getElementsByName('chooseReport');
+
+      if (selection[0].checked) {
+        applesChart.destroy();
+        make_apples(data2, ctx)
+      } else if (selection[1].checked) {
+        bananasChart.destroy();
+        make_bananas(data2, ctx2)
+      };
+
+    };
+
+
+    const download = function (data, reportName) {
+      console.log(reportName)
+      const blob = new Blob([data], { type: 'text/tsv' });
+
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.setAttribute('href', url);
+      if (reportName == "apples") {
+        a.setAttribute('download', 'apples.tsv');
+      } else if (reportName == "bananas") {
+        a.setAttribute('download', 'bananas.tsv');
+      };
+      a.click();
+    };
+
+
+    const csvmaker = function (data1, data2) {
+      csvRows = [];
+      const headers = Object.keys(data1[0]);
+      csvRows.push(headers.join('\t'));
+
+      for(var i = 0; i < data1.length ; i++){
+        var item1 = data1[i];      
+        const values1 = Object.values(item1).join('\t');
+        csvRows.push(values1);
+      };
+
+      for(var j = 0; j <  data2.length; j++){
+        var item2 = data2[j];      
+        const values2 = Object.values(item2).join('\t');
+        csvRows.push(values2);
+      };
+      return csvRows.join('\n');
+    }
+
+    const get = async function (data1, data2, reportName) {
+      const csvdata = csvmaker(data1, data2);
+      download(csvdata, reportName);
+    };
+
+    const btnA = document.getElementById('downloadApples').onclick = function(){
+      let allApples1 = data1.filter(function(item){
+        return item.omark.count > 0 && item.omark.enum != "*see missing bases/marks*" && item.mbase.count == 0 && item.mmark.count == 0 && item.nvariant.count == 0 && item.msmcap.count == 0;
+      });
+      let sortedApples1 = allApples1.sort((a, b) => (a.omark.count + a.mfea.count > b.omark.count + b.mfea.count) ? 1: -1);
+      let applesMap1 =  sortedApples1.map(row=> ({
+                        "Language": row.tag, "Font": row.font, "# Orphaned Marks": row.omark.count, "Orphaned Marks": row.omark.enum, "# Missing locl Fea": row.mfea.count, "Missing locl Fea": row.mfea.enum
+                    }));
+      let allApples2 = data2.filter(function(item){
+        return item.omark.count > 0 && item.omark.enum != "*see missing bases/marks*" && item.mbase.count == 0 && item.mmark.count == 0 && item.nvariant.count == 0 && item.msmcap.count == 0;
+      });
+      let sortedApples2 = allApples2.sort((a, b) => (a.omark.count + a.mfea.count > b.omark.count + b.mfea.count) ? 1: -1);
+      let applesMap2 =  sortedApples2.map(row=> ({
+                        "Language": row.tag, "Font": row.font, "# Orphaned Marks": row.omark.count, "Orphaned Marks": row.omark.enum, "# Missing locl Fea": row.mfea.count, "Missing locl Fea": row.mfea.enum
+                    }));
+
+      get(applesMap1, applesMap2, "apples");
+    };
+
+
+    const btnB = document.getElementById('downloadBananas').onclick = function(){
+      let allBananas1 = data1.filter(function(item){
+        return item.mbase.count > 90 && item.mmark.count > 5 && item.msmcap.count >= 0;
+      });
+      let sortedBananas1 = allBananas1.sort((a, b) => (a.mbase.count + a.mmark.count + a.msmcap.count > b.mbase.count + b.mmark.count + b.msmcap.count) ? 1: -1);
+      let bananasMap1 =  sortedBananas1.map(row=> ({
+            "Language": row.tag, "Font": row.font, "# Missing Bases": row.mbase.count, "Missing Bases": row.mbase.enum, "# Missing Marks": row.mmark.count, "Missing Marks": row.mmark.enum, "# Orphaned Marks": row.omark.count, "Orphaned Marks": row.omark.enum, "# No Variant": row.nvariant.count, "No Variant": row.nvariant.enum, "# Missing locl Fea": row.mfea.count, "Missing locl Fea": row.mfea.enum, "# Missing Small-Cap": row.msmcap.count, "Missing Small-Cap": row.msmcap.enum
+        }));
+      let allBananas2 = data2.filter(function(item){
+        return item.mbase.count > 90 && item.mmark.count > 5 && item.msmcap.count >= 0;
+      });
+      let sortedBananas2 = allBananas2.sort((a, b) => (a.mbase.count + a.mmark.count + a.msmcap.count > b.mbase.count + b.mmark.count + b.msmcap.count) ? 1: -1);
+      let bananasMap2 =  sortedBananas2.map(row=> ({
+        "Language": row.tag, "Font": row.font, "# Missing Bases": row.mbase.count, "Missing Bases": row.mbase.enum, "# Missing Marks": row.mmark.count, "Missing Marks": row.mmark.enum, "# Orphaned Marks": row.omark.count, "Orphaned Marks": row.omark.enum, "# No Variant": row.nvariant.count, "No Variant": row.nvariant.enum, "# Missing locl Fea": row.mfea.count, "Missing locl Fea": row.mfea.enum, "# Missing Small-Cap": row.msmcap.count, "Missing Small-Cap": row.msmcap.enum
+      }));
+
+      get(bananasMap1, bananasMap2, "bananas");
+    };
+
+
+  function make_apples(data, ctx){
+
+    let dataApples = data.filter(function(item){
+      return item.omark.count > 0 && item.omark.enum != "*see missing bases/marks*" && item.mbase.count == 0 && item.mmark.count == 0 && item.nvariant.count == 0 && item.msmcap.count == 0;
+    });
+
+    let detailsA = dataApples.sort((a, b) => (a.omark.count + a.mfea.count > b.omark.count + b.mfea.count) ? 1: -1);
+
+    let omarkData = detailsA.map(({font, tag, omark})=>{
+                      return {x:tag, y:font, r:omark.count};
+                  });
+    let mfeaData = detailsA.map(({font, tag, mfea})=>{
+                      return {x:tag, y:font, r:mfea.count};
+                  });
+
+    let fontLabelsA = [...new Set(detailsA.map((fonts) => fonts.font))];
+    let tagLabelsA = [...new Set(detailsA.map((tags) => tags.tag))];
+
+    applesChart = new Chart(ctx, {
+      type: 'bubble',
+      data: {
+        datasets: [{
+          label: 'orphaned marks',
+          data: omarkData,
+          backgroundColor: '#e6f59890',
+          hoverRadius: 5,
+          hitRadius: 5,
+          borderWidth: 2
+          }, {
+          label: 'missing locl fea',
+          data: mfeaData,
+          backgroundColor: '#fc8d5990',
+          hoverRadius: 5,
+          hitRadius: 5,
+          borderWidth: 2
+          }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        minBarLenth: 20,
+        plugins: {
+          tooltip: {
+            enabled: true
+          },
+          title: {
+              display: true,
+              text: 'Minimal Effort Repairs'
+          },
+        },
+        scales: {
+          x: {
+            type: 'category',
+            labels: tagLabelsA
+
+          },
+          y: {
+            type: 'category',
+            labels: fontLabelsA,
+            ticks: {
+              callback: function(value, index, ticks_array) {
+                let characterLimit = 35;
+                  let label = this.getLabelForValue(value);
+                  if ( label.length >= characterLimit) {
+                      return label.slice(0, label.length).substring(0, characterLimit -1).trim() + '...';
+                  }
+                  return label;
+              }
+            }
+          }
+        },
+        onClick(e) {
+            const activePoints = applesChart.getElementsAtEventForMode(e, 'nearest', {
+                intersect: true
+            }, false)
+            const [{
+                index
+            }] = activePoints;
+            let rawA = detailsA.filter(item => item.font === omarkData[index].y && item.tag === omarkData[index].x);
+            document.getElementById('errors').innerHTML = ("Errors for "+rawA[0].font+", language tag: "+rawA[0].tag+"\n\n" +"missing bases: "+rawA[0].mbase.enum +"\n\nmissing marks: "+rawA[0].mmark.enum+"\n\norphaned marks: "+rawA[0].omark.enum+"\n\nno variant: "+rawA[0].nvariant.enum+"\n\nmissing locl fea: "+rawA[0].mfea.enum+"\n\nmissing small-caps: "+rawA[0].msmcap.enum);
+        }
+      }
+    });
+    applesChart.update();
+    resizeChart(applesChart, detailsA);
+
+  };
+
+
+  function make_bananas(data, ctx2){
+
+    let dataBananas = data.filter(function(item){
+      return item.mbase.count > 90 && item.mmark.count > 5 && item.msmcap.count >= 0;
+      // ;
+    });
+
+    let detailsB = dataBananas.sort((a, b) => (a.mbase.count + a.mmark.count + a.msmcap.count > b.mbase.count + b.mmark.count + b.msmcap.count) ? 1: -1);
+
+    let mbaseData = detailsB.map(({font, tag, mbase})=>{
+                      return {x:tag, y:font, r:mbase.count};
+                  });
+    let mmarkData = detailsB.map(({font, tag, mmark})=>{
+                      return {x:tag, y:font, r:mmark.count};
+                  });
+    let msmcapData = detailsB.map(({font, tag, mmark})=>{
+        return {x:tag, y:font, r:mmark.count};
+    });
+
+
+    let fontLabelsB = [...new Set(detailsB.map((fonts) => fonts.font))];
+    let tagLabelsB = [...new Set(detailsB.map((tags) => tags.tag))];
+
+    bananasChart = new Chart(ctx2, {
+      type: 'bubble',
+      data: {
+        datasets: [{
+          label: 'missing base',
+          data: mbaseData,
+          backgroundColor: '#3288bd08',      
+          hoverRadius: 5,
+          borderWidth: 2,
+          }, {
+          label: 'missing mark',
+          data: mmarkData,
+          backgroundColor: '#99d59450',
+          hoverRadius: 5,
+          borderWidth: 2
+          }, {
+          label: 'missing small-cap',
+          data: msmcapData,
+          backgroundColor: '#d53e4f50',
+          hoverRadius: 5,
+          borderWidth: 2
+          }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        minBarLenth: 20,
+        plugins: {
+          tooltip: {
+            enabled: true
+          },
+          title: {
+              display: true,
+              text: 'Extensive Effort Repairs'
+          },
+        },
+        scales: {
+          x: {
+            type: 'category',
+            labels: tagLabelsB
+          },
+          y: {
+            type: 'category',
+            labels: fontLabelsB,
+            ticks: {
+              callback: function(value, index, ticks_array) {
+                let characterLimit = 35;
+                  let label = this.getLabelForValue(value);
+                  if ( label.length >= characterLimit) {
+                      return label.slice(0, label.length).substring(0, characterLimit -1).trim() + '...';
+                  }
+                  return label;
+              }
+            }
+          }
+        },
+        onClick(e) {
+            const activePoints = bananasChart.getElementsAtEventForMode(e, 'nearest', {
+                intersect: true
+            }, false)
+            const [{
+                index
+            }] = activePoints;
+            let rawB = detailsB.filter(item => item.font === mbaseData[index].y && item.tag === mbaseData[index].x);
+            document.getElementById('errors').innerHTML = ("Errors for "+rawB[0].font+", language tag: "+rawB[0].tag+"\n\n" +"missing bases: "+rawB[0].mbase.enum +"\n\nmissing marks: "+rawB[0].mmark.enum+"\n\norphaned marks: "+rawB[0].omark.enum+"\n\nno variant: "+rawB[0].nvariant.enum+"\n\nmissing locl fea: "+rawB[0].mfea.enum+"\n\nmissing small-caps: "+rawB[0].msmcap.enum);
+        }
+      }
+    });
+    bananasChart.update();
+    resizeChart(bananasChart, detailsB);
+
+  };
+
+  </script>
+
+
+  </body>
+</html>

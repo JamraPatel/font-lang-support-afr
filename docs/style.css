@@ -1,0 +1,133 @@
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 40px;
+    background-color: rgb(66, 85, 118);
+}
+
+.sidebar div {
+    padding: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;
+}
+
+.nav a {
+    font-weight: 300;
+    color: white;
+    text-decoration: none;
+}
+
+.nav.active {
+    background-color: rgb(118, 135, 165);
+    text-align: right;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2)
+}
+
+.nav.active a {
+    font-weight: 700;
+    color: rgb(17, 26, 44);
+}
+
+.nav.sub {
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.dummy {    background-color: rgb(250, 233, 103);
+    background-color: rgb(212, 239, 241);
+    background-color: rgb(219, 240, 243);
+    background-color: rgb(218, 229, 247);
+    background-color: rgb(35, 91, 181);
+    background-color: rgb(166, 196, 243);
+    background-color: rgb(218, 229, 247);
+
+}
+
+.body-text {
+    margin-left: 250px;
+    padding: 5px;
+    background-color: rgb(223, 226, 231);
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+
+}
+
+li {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
+.header {
+    margin-left: 250px;
+    padding-left: 5px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    background-color: rgb(37, 52, 78);
+    padding: 10px;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+.header h1 {
+    font-weight: 700;
+    color: white;
+}
+
+#overview, #detailed, #apples, #bananas{
+    margin-left: 250px;
+    position: relative;
+}
+
+#errors {
+    width: 230px;
+    height: 40em;
+}
+
+select {
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 90%;
+}
+
+button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    float: right;
+}
+
+
+#back {
+    display: none;
+}
+
+#breakdown {
+    display: none;
+}
+
+#insight {
+    float: left;
+    font-size: 14px;
+    background-color: rgb(218, 229, 247);
+    margin-bottom: 10px;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2)
+}
+
+canvas{
+    padding-left: 5px;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2)
+}
+
+.card {
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2)
+}

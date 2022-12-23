@@ -1,1 +1,235 @@
-<h1>Testing</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
+  </head>
+
+  <body>
+
+    <div class="sidebar">
+        <div class="nav active"><a href="./index.html">&#60; Dashboard</a></div>
+        <div id="insight">
+            Filter Support Levels
+            <select id="selectLevel" onChange="selectedLevel(tagOverviewChart)">
+              <option>All</option>
+            </select>
+            <textarea name="errors" id="errors"></textarea>
+            <button id="copy">Copy Report</button>
+        </div>
+        <div class="nav"><a href="./font-summary.html">Font Results &#62;</a></div>
+        <div class="nav"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
+        <div class="nav"><a href="./glyph-analysis.html">Glyph Analysis &#62;</a></div>
+        <div class="nav"><a href="./repairing-fonts.html">Repairing Fonts &#62;</a></div>
+
+    </div>
+
+    <div class="header"><h1>Google Fonts Pan-African Latin Gap Analysis</h1></div>
+
+    <div class="body-text">
+        <h2>Dashboard</h2>
+        <p>Overview of Shaperglot analysis of the Google Fonts Library and Google Sans for Pan-African language support.</p>
+    </div>
+    <div id="overview">
+        <canvas id="tagOverviewChart"></canvas>
+    </div>
+    <div class="body-text">
+      <h2>Missing GF Lang Data</h2>
+      <p>The following list of tags do not have exemplar data in <i>gflanguages</i></p>
+      <p class="card", id="tags"> stuff here</p>
+  </div>
+    <div class="body-text">
+        <h2>Data Freshness</h2>
+        <p class="card", id="time"> stuff here</p>
+    </div>
+
+
+
+  <script>
+    let summary = [];
+    let missing_tags = [];
+    const P0 = ['swa', 'hau'];
+    const P1 = ['amh', 'zul', 'yor', 'afr'];
+    const P2 = ['ibo', 'pcm', 'orm', 'xho', 'som', 'aka'];
+    const PX = ['mlg', 'sot', 'kin','ful', 'sna', 'tsn', 'wol', 'lin', 'run', 'nso'];
+
+    const ctx = document.getElementById('tagOverviewChart').getContext('2d');
+
+    async function fontOverviewJSON() {
+      const response = await fetch('./afr_tag_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
+      const results = await response.json(); 
+      console.log(results)
+      return results;
+    }
+
+    fontOverviewJSON().then(results => {summary = results.slice(0, results.length -2), loadTags(results[[results.length - 2]]), make_overview(summary, ctx), loadTime(results[results.length - 1])});
+
+
+    //fontOverviewJSON().then(results => {summary = results});
+
+    function loadTime(data) {
+        document.getElementById('time').innerHTML = data.Timestamp;
+    }
+
+    function loadTags(data) {
+        let tagArray = data["Missing GFLang Data"];
+        document.getElementById('tags').innerText = tagArray.toString().replace(/,/g, " ");
+    }
+
+    let selectLevel = document.getElementById("selectLevel");
+    let alphabet = ['P0', 'P1', 'P2', 'PX'];
+    for(var i = 0; i < alphabet.length; i++) {
+      let opt = alphabet[i];
+      let el = document.createElement("option");
+      el.textContent = opt;
+      el.value = opt;
+      selectLevel.appendChild(el);
+    };
+
+    function selectedLevel(chart) {
+      let supportLevel = selectLevel.options[selectLevel.selectedIndex].text;
+      let filtered = [];
+      if (supportLevel ==  'All') {
+        filtered = summary;
+      } else if (supportLevel == 'P0') {
+        filtered = summary.filter(level => P0.includes(level.tag));
+      } else if (supportLevel == 'P1') {
+        filtered = summary.filter(level => P1.includes(level.tag));
+      } else if (supportLevel == 'P2') {
+        filtered = summary.filter(level => P2.includes(level.tag));
+      } else if (supportLevel == 'PX') {
+        filtered = summary.filter(level => PX.includes(level.tag));
+      };
+      console.log(filtered)
+      let subset = filtered.sort((a, b) => (a.font > b.font) ? 1: -1);
+      tagOverviewChart.destroy();
+      make_overview(subset, ctx);
+    };
+
+
+    document.getElementById("copy").onclick = function() {
+      let content = document.getElementById("errors").value;
+      navigator.clipboard.writeText(content).then(() => {
+              alert('Errors copied to clipboard');
+            })
+    }
+
+    function resizeChart(chart, data) {
+      let uniqueEntries = [...new Set(data.map((tags) => tags.tag))];
+      let count = uniqueEntries.length;
+      let divHeight = String(count * 1) + 'px';
+      chart.canvas.parentNode.style.height = divHeight;
+    };
+
+    function make_overview(summary, ctx) {
+
+        //subset = summary.sort((a, b) => (a.tag > b.tag) ? 1: -1);
+
+        let summarySort = summary.sort((a, b) => (a.pass.count < b.pass.count) ? 1: -1);
+
+        let total = summarySort[0].pass.count + summarySort[0].fail.count
+
+        tagOverviewChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                datasets: [{
+                label: 'pass',
+                data: summarySort,
+                barPercentage: 1.0,
+                categoryPercentage: 1.0,
+                backgroundColor: '#99d59490',
+                parsing: {
+                    xAxisKey: 'pass.count'
+                }, 
+                }, {
+                label: 'fail',
+                data: summarySort,
+                barPercentage: 1.0,
+                categoryPercentage: 1.0,
+                backgroundColor: '#d53e4f90',
+                parsing: {
+                    xAxisKey: 'fail.count'
+                }
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                minBarLenth: 20,
+                plugins: {
+                tooltip: {
+                    enabled: true
+                },
+                title: {
+                    display: true,
+                    text: 'Language Support Overview'
+                }
+                },
+                parsing: {
+                    yAxisKey: 'tag',
+                },
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: {display: false},
+                        max: total,
+                        title: {
+                            display: true,
+                            text: '% of Fonts'
+                        },
+                        ticks: {
+                            min: 0,
+                            max: total,
+                            stepSize: total/5,
+                            callback: function (summarySort) {
+                            return (summarySort / total * 100).toFixed(0) + '%';
+                            },
+                        },
+                    }, 
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        offset: true,
+                        grid: {display: false},
+                        title: {
+                            display: true,
+                            text: 'Language Tag'
+                        },
+                        ticks: {
+                            display: false
+                        }
+                    }
+                },
+                onClick(e) {
+                    const activePoints = tagOverviewChart.getElementsAtEventForMode(e, 'nearest', {
+                        intersect: true
+                    }, false)
+                    const [{
+                        index
+                    }] = activePoints;
+                    let sortedPassing = summarySort[index].pass.fonts.sort((a, b) => (a > b) ? 1: -1);
+                    let sortedFailing = summarySort[index].fail.fonts.sort((a, b) => (a > b) ? 1: -1);
+                    console.log();
+                    document.getElementById('errors').innerHTML = ("Passing Fonts:\n" + sortedPassing.toString().replace(/,/g, "\n")+"\n\nFailing Fonts:\n"+sortedFailing.toString().replace(/,/g, "\n"));
+                    }
+            }
+        });
+            
+        tagOverviewChart.update();
+        //resizeChart(tagOverviewChart, summarySort);
+    };
+
+
+   
+
+    
+
+
+  </script>
+
+
+  </body>
+</html>

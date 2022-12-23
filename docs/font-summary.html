@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
+  </head>
+  
+
+  <body>
+
+    <div class="sidebar">
+      <div class="nav"><a href="./index.html">Dashboard &#62;</a></div>
+      <div class="nav active"><a href="./font-summary.html">&#60; Font Results</a></div>
+      <div id="insight">
+        <span id="overviewSelect">Filter Alphabetically</span> 
+        <select id="selectAlpha" onChange="selectedAlpha(fontSummaryChart)">
+          <option>A</option>
+        </select>
+        <span id="detailSelect">Sort Options</span>
+        <select id="selectSort" onChange="selectedSortOpt(singleFontSummaryChart)">
+          <option>Alphabetically</option>
+        </select>
+        <textarea name="errors" id="errors"></textarea>
+        <button id="copy">Copy Errors</button>
+        <button id="breakdown">Breakdown</button>
+        <button id="back">&#60;-Back</button>
+      </div>
+      <div class="nav"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
+      <div class="nav"><a href="./glyph-analysis.html">Glyph Analysis &#62;</a></div>
+      <div class="nav"><a href="./repairing-fonts.html">Repairing Fonts &#62;</a></div>
+    </div>
+      
+    <div class="header"><h1>Google Fonts Pan-African Latin Gap Analysis</h1></div>
+
+    <div class="body-text">
+        <h2>Font Level Results</h2>
+        <p>This report provides a breakdown of the Pan-African Latin support errors for the Google Fonts Library and Google Sans.</p>
+        <h3>Usage</h3>
+        <ul>
+           <li>The report can be filtered alphabetically using the options in the side bar.</li>
+          <li>For a breakdown of errors by language tag choose the font of interest in the pull down menu.</li>
+          <li>Selecting any row in the chart will dump the errors in the side bar. Clicking on error items in the legend will toggle them on/off in the chart.</li>
+        </ul>
+    </div>
+
+    <div id="overview">
+        <canvas id="fontSummaryChart"></canvas>
+    </div>
+    <div id="detailed">
+      <canvas id="singleFontSummaryChart"></canvas>
+  </div>
+
+
+  <script>
+    let summary = [];
+    let breakdown1 = [];
+    let breakdown2 = [];
+
+    let currBreakdown;
+    let currAlpha;
+    let fontSummaryChart;
+    let singleFontSummaryChart;
+
+    const ctx = document.getElementById('fontSummaryChart').getContext('2d');
+    const ctx2 = document.getElementById('singleFontSummaryChart').getContext('2d');
+
+    async function fontSummaryJSON() {
+      const responseSum = await fetch('./afr_font_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const resultsSum = await responseSum.json();
+      return resultsSum;
+    }
+    
+    fontSummaryJSON().then(resultsSum=> {make_summary(resultsSum, ctx, 'init'), summary = resultsSum});
+   
+    async function fontBreakdownJSON1() {
+      const responseBreak1 = await fetch('./afr_lang_summary_1.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const resultsBreak1 = await responseBreak1.json();
+      return resultsBreak1;
+    }
+
+    fontBreakdownJSON1().then(resultsBreak1 => {make_breakdown([], ctx2), breakdown1 = resultsBreak1});
+
+    async function fontBreakdownJSON2() {
+      const responseBreak2 = await fetch('./afr_lang_summary_2.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const resultsBreak2 = await responseBreak2.json();
+      return resultsBreak2;
+    }
+
+    fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = resultsBreak2});
+
+  
+    document.getElementById('detailed').style.display = "none";
+    document.getElementById('selectSort').style.display = "none";
+    document.getElementById('detailSelect').style.display = "none";
+
+
+    const selectAlpha = document.getElementById("selectAlpha");
+    const alphabet = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    for(let i = 0; i < alphabet.length; i++) {
+      let opt = alphabet[i];
+      let el = document.createElement("option");
+      el.textContent = opt;
+      el.value = opt;
+      selectAlpha.appendChild(el);
+    };
+
+    function selectedAlpha(chart) {
+      let fontAlpha = selectAlpha.options[selectAlpha.selectedIndex].text;
+      currAlpha = selectAlpha.options[selectAlpha.selectedIndex].index;
+      let alphafiltered = []
+      if (fontAlpha != 'All') {
+        alphaFiltered = summary.filter(function(alpha) { return alpha.font[0] == fontAlpha });
+      } else {
+        alphaFiltered = summary;
+      };
+      let alphaSubset = alphaFiltered.sort((a, b) => (a.font > b.font) ? 1: -1);
+      fontSummaryChart.destroy();
+      make_summary(alphaSubset, ctx, 'redraw');
+      //document.getElementById('detailed').style.display = "none";
+      //document.getElementById('overview').style.display = "block";
+      document.location='#overview'
+    };
+
+
+    const selectSort = document.getElementById("selectSort");
+    const options = ['Ascending', 'Descending'];
+    for(var i = 0; i < options.length; i++) {
+      let opt = options[i];
+      let el = document.createElement("option");
+      el.textContent = opt;
+      el.value = opt;
+      selectSort.appendChild(el);
+    };
+
+    function selectedSortOpt(chart) {
+      let selectedOpt = selectSort.options[selectSort.selectedIndex].text;
+      let optFiltered = []
+      if (selectedOpt == 'Alphabetically') {
+       optFiltered = currBreakdown.sort((a, b) => (a.tag < b.tag) ? 1: -1);
+      } else if (selectedOpt == "Ascending") {
+        optFiltered = currBreakdown.sort((a, b) => ((a.mbase.count + a.mmark.count + a.omark.count + a.nvariant.count + a.mfea.count + a.msmcap.count) < (b.mbase.count + b.mmark.count + b.omark.count + b.nvariant.count + b.mfea.count + b.msmcap.count)) ? 1: -1);
+      } else if (selectedOpt == "Descending") {
+        optFiltered = currBreakdown.sort((a, b) => ((a.mbase.count + a.mmark.count + a.omark.count + a.nvariant.count + a.mfea.count + a.msmcap.count) > (b.mbase.count + b.mmark.count + b.omark.count + b.nvariant.count + b.mfea.count + b.msmcap.count)) ? 1: -1);
+      }
+      let optSubset = optFiltered.sort((a, b) => (a.font > b.font) ? 1: -1);
+      singleFontSummaryChart.destroy();
+      make_breakdown(optSubset, ctx2);
+      //document.getElementById('detailed').style.display = "block";
+      //document.getElementById('overview').style.display = "none";
+      document.location='#detailed'
+
+    };
+
+
+    document.getElementById("copy").onclick = function() {
+      let content = document.getElementById("errors").value;
+      navigator.clipboard.writeText(content).then(() => {
+              alert('Errors copied to clipboard');
+            })
+    };
+
+    document.getElementById("back").onclick = function() {
+      console.log("back pressed")
+      document.getElementById('selectAlpha').style.display = "block";
+      document.getElementById('selectAlpha').selectedIndex = currAlpha;
+      document.getElementById('overviewSelect').style.display = "block";
+      document.getElementById('selectSort').style.display = "none";
+      document.getElementById('detailSelect').style.display = "none";
+      document.getElementById('detailed').style.display = "none";
+      document.getElementById('overview').style.display = "block";
+      document.getElementById('back').style.display = "none";
+      document.getElementById('breakdown').style.display = "none";
+      document.getElementById('errors').innerHTML = '';
+      document.location='#overview'
+    };
+
+
+    function resizeChart(chart, data) {
+      let uniqueEntries;
+      if (chart == fontSummaryChart) {
+        uniqueEntries = [...new Set(data.map((fonts) => fonts.font))];
+      } else if (chart == singleFontSummaryChart) {
+        uniqueEntries = [...new Set(data.map((tags) => tags.tag))];
+      };
+      let count = uniqueEntries.length;
+      let divHeight = String(count * 20 + 100) + 'px';
+      chart.canvas.parentNode.style.height = divHeight;
+    };
+
+
+  function make_summary(summary, ctx, state) {
+
+    let resultsFilt;
+    if (state == 'init'){
+      resultsFilt = summary.filter(function(alpha) { return alpha.font[0] == 'A' });
+    } else {
+      resultsFilt = summary;
+    };
+    let summarySort = resultsFilt.sort((a, b) => (a.font > b.font) ? 1: -1);
+
+    fontSummaryChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: 'missing base',
+          backgroundColor: '#3288bd90',
+          data: summarySort,
+          parsing: {
+            xAxisKey: 'mbase.count'
+          }, 
+          }, {
+          label: 'missing mark',
+          data: summarySort,
+          backgroundColor: '#99d59490',
+          parsing: {
+            xAxisKey: 'mmark.count'
+          },
+          }, {
+          label: 'orphaned marks',
+          data: summarySort,
+          backgroundColor: '#e6f59890',
+          parsing: {
+            xAxisKey: 'omark.count'
+          },
+        }, {
+          label: 'no variant',
+          data: summarySort,
+          backgroundColor: '#fee08b90',
+          parsing: {
+            xAxisKey: 'nvariant.count'
+          },
+        }, {
+          label: 'missing locl fea',
+          data: summarySort,
+          backgroundColor: '#fc8d5990',
+          parsing: {
+            xAxisKey: 'mfea.count'
+          },
+        }, {
+          label: 'missing small-cap',
+          data: summarySort,
+          backgroundColor: '#d53e4f90',
+          parsing: {
+            xAxisKey: 'msmcap.count'
+          },
+          }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        minBarLenth: 20,
+        plugins: {
+          tooltip: {
+            enabled: true
+          },
+          title: {
+              display: true,
+              text: 'All Errors by Font'
+          }
+
+        },
+        parsing: {
+            yAxisKey: 'font',
+        },
+        indexAxis: 'y',
+        scales: {
+          x: {
+            stacked: true
+
+          },
+          y: {
+            stacked: true,
+            beginAtZero: true,
+            offset: true,
+            ticks: {
+              callback: function(value, index, ticks_array) {
+                let characterLimit = 35;
+                  let label = this.getLabelForValue(value);
+                  if ( label.length >= characterLimit) {
+                      return label.slice(0, label.length).substring(0, characterLimit -1).trim() + '...';
+                  }
+                  return label;
+              }
+            }
+          }
+        },
+        onClick(e) {
+            const activePoints = fontSummaryChart.getElementsAtEventForMode(e, 'nearest', {
+                intersect: true
+            }, false)
+            const [{
+                index
+            }] = activePoints;
+            document.getElementById('errors').innerHTML = ("Cumulative Errors for "+summarySort[index].font+"\n\n" + "missing bases: "+summarySort[index].mbase.enum +"\n\nmissing marks: "+summarySort[index].mmark.enum+"\n\norphaned marks: "+summarySort[index].omark.enum+"\n\nno variant: "+summarySort[index].nvariant.enum+"\n\nmissing locl fea: "+summarySort[index].mfea.enum+"\n\nmissing small-caps: "+summarySort[index].msmcap.enum);
+            document.getElementById('breakdown').style.display = "block";
+            document.getElementById('breakdown').onclick = function() {
+              let fontName = summarySort[index].font;
+              const keyList1 = ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
+              const keyList2 = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+              let selectedFontData;
+              if (keyList1.includes(fontName.charAt(0))){
+                selectedFontData = breakdown1.filter(function(singlefont) { return singlefont.font == fontName });
+              } else if (keyList2.includes(fontName.charAt(0))) {
+                selectedFontData = breakdown2.filter(function(singlefont) { return singlefont.font == fontName });
+              };
+
+              let sortedFontData = selectedFontData.sort((a, b) => (a.tag > b.tag) ? 1: -1);
+              singleFontSummaryChart.destroy();
+              make_breakdown(sortedFontData, ctx2);
+              document.getElementById('selectAlpha').style.display = "none";
+              document.getElementById('overviewSelect').style.display = "none";
+              document.getElementById('selectSort').style.display = "block";
+              document.getElementById('detailSelect').style.display = "block";
+              document.getElementById('detailed').style.display = "block";
+              document.getElementById('overview').style.display = "none";
+              document.getElementById('back').style.display = "block";
+              document.getElementById('breakdown').style.display = 'none';
+              document.getElementById('selectAlpha').selectedIndex = 0;
+              document.location='#detailed'
+              currBreakdown = sortedFontData;
+            };
+        }
+      }
+
+    });
+
+    fontSummaryChart.update();
+    resizeChart(fontSummaryChart, summarySort);
+  };
+
+  function make_breakdown(breakdown, ctx2){
+
+    let details = breakdown
+
+    singleFontSummaryChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: 'missing base',
+          data: details,
+          backgroundColor: '#3288bd90',
+          parsing: {
+            xAxisKey: 'mbase.count'
+          }, 
+          }, {
+          label: 'missing mark',
+          data: details,
+          backgroundColor: '#99d59490',
+          parsing: {
+            xAxisKey: 'mmark.count'
+          },
+          }, {
+          label: 'orphaned marks',
+          data: details,
+          backgroundColor: '#e6f59890',
+          parsing: {
+            xAxisKey: 'omark.count'
+          },
+        }, {
+          label: 'no variant',
+          data: details,
+          backgroundColor: '#fee08b90',
+          parsing: {
+            xAxisKey: 'nvariant.count'
+          },
+        }, {
+          label: 'missing locl fea',
+          data: details,
+          backgroundColor: '#fc8d5990',
+          parsing: {
+            xAxisKey: 'mfea.count'
+          },
+        }, {
+          label: 'missing small-cap',
+          data: details,
+          backgroundColor: '#d53e4f90',
+          parsing: {
+            xAxisKey: 'msmcap.count'
+          },
+          }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        minBarLenth: 20,
+        plugins: {
+          tooltip: {
+            enabled: true
+          },
+          title: {
+              display: true,
+              text: 'Errors by Font and Language'
+          },
+        },
+        parsing: {
+            yAxisKey: 'tag',
+        },
+        indexAxis: 'y',
+        scales: {
+          x: {
+            stacked: true
+
+          },
+          y: {
+            stacked: true,
+            beginAtZero: true,
+            offset: true,
+            ticks: {
+              callback: function(value, index, ticks_array) {
+                let characterLimit = 35;
+                  let label = this.getLabelForValue(value);
+                  if ( label.length >= characterLimit) {
+                      return label.slice(0, label.length).substring(0, characterLimit -1).trim() + '...';
+                  }
+                  return label;
+              }
+            }
+          }
+        },
+        onClick(e) {
+            const activePoints = singleFontSummaryChart.getElementsAtEventForMode(e, 'nearest', {
+                intersect: true
+            }, false)
+            const [{
+                index
+            }] = activePoints;
+            document.getElementById('errors').innerHTML = ("Errors for "+details[index].font+", language tag: "+details[index].tag+"\n\n" +"missing bases: "+details[index].mbase.enum +"\n\nmissing marks: "+details[index].mmark.enum+"\n\norphaned marks: "+details[index].omark.enum+"\n\nno variant: "+details[index].nvariant.enum+"\n\nmissing locl fea: "+details[index].mfea.enum+"\n\nmissing small-caps: "+details[index].msmcap.enum);
+        }
+      }
+    });
+    singleFontSummaryChart.update();
+    resizeChart(singleFontSummaryChart, details);
+
+  };
+    
+  
+  
+
+
+  </script>
+
+
+  </body>
+</html>
