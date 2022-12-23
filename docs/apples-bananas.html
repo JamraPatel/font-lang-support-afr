@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako_inflate.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
@@ -60,24 +61,23 @@
     document.getElementById('downloadBananas').style.display = "none";
    
     async function fontAnalysisJSON1() {
-      const response1 = await fetch('./afr_lang_summary_1.json', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
-      const results1 = await response1.json(); 
+      const response1 = await fetch('./afr_lang_summary_1.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const results1 = await response1.arrayBuffer();
       //console.log(results1);
       return results1;
     }
 
-    fontAnalysisJSON1().then(results1 => {make_apples(results1, ctx), make_bananas(results1, ctx2), data1 = results1});
+    fontAnalysisJSON1().then(results1 => {data1 = JSON.parse(pako.ungzip(new Uint8Array(results1), { to: 'string'})), make_apples(data1, ctx), make_bananas(data1, ctx2)});
 
     async function fontAnalysisJSON2() {
-      const response2 = await fetch('./afr_lang_summary_2.json', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
-      const results2 = await response2.json(); 
+      const response2 = await fetch('./afr_lang_summary_2.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const results2 = await response2.arrayBuffer();
       //console.log(results2);
 
       return results2;
     }
 
-    fontAnalysisJSON2().then(results2 => {data2 = results2});
-
+    fontAnalysisJSON2().then(results2 => {data2 = JSON.parse(pako.ungzip(new Uint8Array(results2), { to: 'string'}))});
 
 
     document.getElementById('bananas').style.display = "none";

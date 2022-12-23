@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako_inflate.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
@@ -74,23 +75,7 @@
     
     fontSummaryJSON().then(resultsSum=> {make_summary(resultsSum, ctx, 'init'), summary = resultsSum});
    
-    async function fontBreakdownJSON1() {
-      const responseBreak1 = await fetch('./afr_lang_summary_1.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
-      const resultsBreak1 = await responseBreak1.json();
-      return resultsBreak1;
-    }
 
-    fontBreakdownJSON1().then(resultsBreak1 => {make_breakdown([], ctx2), breakdown1 = resultsBreak1});
-
-    async function fontBreakdownJSON2() {
-      const responseBreak2 = await fetch('./afr_lang_summary_2.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
-      const resultsBreak2 = await responseBreak2.json();
-      return resultsBreak2;
-    }
-
-    fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = resultsBreak2});
-
-  
     document.getElementById('detailed').style.display = "none";
     document.getElementById('selectSort').style.display = "none";
     document.getElementById('detailSelect').style.display = "none";
@@ -329,6 +314,24 @@
     fontSummaryChart.update();
     resizeChart(fontSummaryChart, summarySort);
   };
+
+
+  async function fontBreakdownJSON1() {
+      const responseBreak1 = await fetch('./afr_lang_summary_1.json.gz', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const resultsBreak1 = await responseBreak1.arrayBuffer();
+      return resultsBreak1;
+    }
+
+    fontBreakdownJSON1().then(resultsBreak1 => {make_breakdown([], ctx2), breakdown1 = JSON.parse(pako.ungzip(new Uint8Array(resultsBreak1), { to: 'string'}))});
+
+    async function fontBreakdownJSON2() {
+      const responseBreak2 = await fetch('./afr_lang_summary_2.json.gz', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const resultsBreak2 = await responseBreak2.arrayBuffer();
+      return resultsBreak2;
+    }
+
+    fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = JSON.parse(pako.ungzip(new Uint8Array(resultsBreak2), { to: 'string'}))});
+
 
   function make_breakdown(breakdown, ctx2){
 
