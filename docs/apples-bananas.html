@@ -39,7 +39,7 @@
         <p>This report highlights fonts that require minimal (apples) and extensive (bananas) effort to repair. Apples are fonts that can be easily repaired without the original foundry. It focuses on fonts that only have orphaned mark failures and missing OT locl features. Bananas are fonts that require a alot of new characters to be designed and would likely require involvement from the origin foundry.</p>
         <h3>Usage</h3>
         <ul>
-          <li>Selecting a specific error bubble will report the detaisl in the side bar, which can be copied to clipboard.</li>
+          <li>Selecting a specific error bubble will report the details in the side bar, which can be copied to clipboard.</li>
           <li>Use to download button to download the entire Apples or Bananas report as a tab separated values file.</li>
         </ul>
     </div>
@@ -72,17 +72,7 @@
       return results1;
     }
 
-    fontAnalysisJSON1().then(results1 => {data1 = JSON.parse(pako.ungzip(new Uint8Array(results1), { to: 'string'})), make_apples(data1, ctx), make_bananas(data1, ctx2)});
-
-    async function fontAnalysisJSON2() {
-      const response2 = await fetch('./afr_lang_summary_2.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
-      const results2 = await response2.arrayBuffer();
-      //console.log(results2);
-
-      return results2;
-    }
-
-    fontAnalysisJSON2().then(results2 => {data2 = JSON.parse(pako.ungzip(new Uint8Array(results2), { to: 'string'}))});
+    fontAnalysisJSON1().then(results1 => {data1 = JSON.parse(pako.inflate(new Uint8Array(results1), { to: 'string'})), make_apples(data1, ctx), make_bananas(data1, ctx2)});
 
 
     document.getElementById('bananas').style.display = "none";
@@ -106,12 +96,14 @@
             document.getElementById('bananas').style.display = "none";
             document.getElementById('downloadApples').style.display = "block";
             document.getElementById('downloadBananas').style.display = "none";
+            document.getElementById('errors').innerHTML = '';
             document.location='#apples'
           } else if (button.value == 'chooseBananas') {
             document.getElementById('apples').style.display = "none";
             document.getElementById('bananas').style.display = "block";
             document.getElementById('downloadApples').style.display = "none";
             document.getElementById('downloadBananas').style.display = "block";
+            document.getElementById('errors').innerHTML = '';
             document.location='#bananas'
 
           }
@@ -138,6 +130,8 @@
         bananasChart.destroy();
         make_bananas(data1, ctx2)
       };
+      document.getElementById('errors').innerHTML = '';
+
 
     };
 
@@ -151,6 +145,8 @@
         bananasChart.destroy();
         make_bananas(data2, ctx2)
       };
+      document.getElementById('errors').innerHTML = '';
+
 
     };
 
@@ -419,6 +415,16 @@
     resizeChart(bananasChart, detailsB);
 
   };
+
+  async function fontAnalysisJSON2() {
+      const response2 = await fetch('./afr_lang_summary_2.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const results2 = await response2.arrayBuffer();
+      //console.log(results2);
+      return results2;
+    }
+
+    fontAnalysisJSON2().then(results2 => {data2 = JSON.parse(pako.inflate(new Uint8Array(results2), { to: 'string'}))});
+
 
   </script>
 

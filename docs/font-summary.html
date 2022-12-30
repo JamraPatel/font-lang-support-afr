@@ -317,20 +317,20 @@
 
 
   async function fontBreakdownJSON1() {
-      const responseBreak1 = await fetch('./afr_lang_summary_1.json.gz', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const responseBreak1 = await fetch('./afr_lang_summary_1.json.gz', {delay: 300, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
       const resultsBreak1 = await responseBreak1.arrayBuffer();
       return resultsBreak1;
     }
 
-    fontBreakdownJSON1().then(resultsBreak1 => {make_breakdown([], ctx2), breakdown1 = JSON.parse(pako.ungzip(new Uint8Array(resultsBreak1), { to: 'string'}))});
+    fontBreakdownJSON1().then(resultsBreak1 => {make_breakdown([], ctx2), breakdown1 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak1), { to: 'string'}))});
 
     async function fontBreakdownJSON2() {
-      const responseBreak2 = await fetch('./afr_lang_summary_2.json.gz', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const responseBreak2 = await fetch('./afr_lang_summary_2.json.gz', {delay: 500, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
       const resultsBreak2 = await responseBreak2.arrayBuffer();
       return resultsBreak2;
     }
 
-    fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = JSON.parse(pako.ungzip(new Uint8Array(resultsBreak2), { to: 'string'}))});
+    fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak2), { to: 'string'}))});
 
 
   function make_breakdown(breakdown, ctx2){

@@ -102,6 +102,7 @@
       } else if (supportLevel == 'PX') {
         filtered = summary.filter(level => PX.includes(level.tag));
       };
+      document.getElementById('errors').innerHTML = '';
       //console.log(filtered)
       let subset = filtered.sort((a, b) => (a.font > b.font) ? 1: -1);
       tagOverviewChart.destroy();

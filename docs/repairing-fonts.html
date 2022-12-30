@@ -21,10 +21,11 @@
         <div class="nav"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
         <div class="nav"><a href="./glyph-analysis.html">Glyph Analysis &#62;</a></div>
         <div class="nav active"><a href="./repairing-fonts.html">&#60; Repairing Fonts</a></div>
-        <div class="nav sub"><a href="#Intro">Introduction</a></div>
-        <div class="nav sub"><a href="">Interpreting Results</a></div>
-        <div class="nav sub"><a href="">Glyph Variants</a></div>
-
+        <div class="nav sub"><a href="#intro">Introduction</a></div>
+        <div class="nav sub"><a href="#exemplar">Missing Bases/Missing Marks</a></div>
+        <div class="nav sub"><a href="#orphan">Orphaned Marks</a></div>
+        <div class="nav sub"><a href="#variant">No Variant/Missing locl Feature</a></div>
+        <div class="nav sub"><a href="#smallcap">Missing Small-Caps</a></div>
 
     </div>
 
@@ -50,7 +51,7 @@
         </ul>
         <p>The Font Results page reports the aggregated errors for all language tags tested. When a data row is selected the combined errors will be reported in the sidebar. Pressing the <i>Breakdown</i> button will breakout the errors for the selected font by language tag. Selecting any given data row will then report the specific errors for that language tag in the side bar. In both cases the error details can be copied to your clipboard.</p>
         </div>
-        <h3>Missing Bases/Missing Marks</h3>
+        <h3 id="exemplar">Missing Bases/Missing Marks</h3>
         <div class="card">
             <p>The missing bases ans missing marks test is fairly straightforward. The test compares the glyph set in a font against the exemplar character sets defined in <a href="https://github.com/googlefonts/lang">GF Languages</a> for a given language tag. If the glyph is missing in the font it is reported as an error. Missing marks will be shown attached to a dotted circle for cleaner presentation, however the glyph that needs to be added to a failing font is the combining mark itself.</p>
             <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
@@ -58,21 +59,33 @@
             <li>Some mark glyphs were missing: <i>mark glyphs...</i></li>
             <p><b>Remedy: </b>Add missing glyphs to font. If the glyphs are found to be in the font source file check to see if any subsetting routines are used to export the font. If so, ensure that the required glyphs are not excluded from the export.</p>
         </div>
-        <h3>Orphaned Marks</h3>
+        <h3 id="orphan">Orphaned Marks</h3>
         <div class="card">
             <p>The orphaned marks test checks to see if necessary marks for a langauge attach to a base glyph via the OT mark feature. If the mark fails to attach to the base glyph it is reported as an error. If either the base or mark are missing in the font mark attachment cannot be tested. In this case, the error will be reported as "*see missing bases/marks*". </p>
             <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
-            <li>Shaper didn't attach <i>mark glyph</i> to <i>base glyph</i></li>
+            <li>No variant glyphs were found for <i>base glyph</i> to <i>base glyph</i></li>
             <li>Shaper produced a .notdef</li>
             <p><b>Remedy: </b>Ensure that the tested base and mark glyphs have corresponding anchors defined. For "*see missing bases/marks*" errors first add all the necessary glyphs to the font and verify that corresponding anchors are present.</p>
+            <p><b>Guide:</b></p>
+
         </div>
-        <h3>Un-encoded Glyph Variants/Missing OT locl Feature</h3>
+        <h3 id="variant">No Variant/Missing locl Feature</h3>
         <div class="card">
-            <p></p>
+            <p>No variant and missing locl feature are related errors. The first check looks for un-encoded glyph variants that are required for certain languages. If a variant is not present in a font, this is not necessarily a failure, as the default form may be the appropriate style. The missing locl feature test checks to see if a target glyph variant is accessed via an OpenType locl feature in the font. This test only runs if the target language has a valid OpenType Lang tag.</p>
+            <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
+            <li>No variant glyphs were found for <i>glyph</i></i></li>
+            <li>The locl feature did not affect <i>glyph</i></li>
+            <p><b>Remedy: </b>For no variant errors use the guide below to determine if the default style of the letter matches the requirements for African languages. If not, add the appropriate variant to the font. For missing locl feature errors update the locl feature to create the proper glyph substitution using the guide below to write the necessary OT code.</p>
+            <p><b>Guide:</b></p>
         </div>
-        <h3>Missing Small-Caps</h3>
+        <h3 id="smallcap">Missing Small-Caps</h3>
         <div class="card">
-            <p></p>
+            <p>The mising small-caps test check ensures that small cap versions of all exemplar characters exist in the font if the font includes a smcp OpenType feature.</p>
+            <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
+            <li>Requires Small-cap <i>glyph</i></i></li>
+            <p><b>Remedy: </b>Add small cap versions of all glyphs reported by the error and ensure the smcp feature is updated.</p>
+            <p><b>Guide:</b></p>
+
         </div>
     </div>
 
