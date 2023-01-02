@@ -99,10 +99,16 @@
             <li>The locl feature did not affect <i>glyph</i></li>
             <br>
             <p><b>Remedy</b></p>
-            <p>For no variant errors use the guide below to determine if the default style of the letter matches the requirements for African languages. If not, add the appropriate variant to the font. For missing locl feature errors update the locl feature to create the proper glyph substitution using the guide below to write the necessary OT code. For "*see notes on glyph variants*" errors first add all of the necessary glyphs to the font then create the appropriate variants.</p>
+            <p>For no variant errors use the guide below to determine if the default style of the letter matches the requirements for African languages. If not, add the appropriate variant to the font. For missing locl feature errors update the locl feature to create the proper glyph substitution using the guide below to write the necessary OT code. Refer to <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/languagetags">OT Language Tags</a> to see a list of valid language tags. For "*see notes on glyph variants*" errors first add all of the necessary glyphs to the font then create the appropriate variants. </p>
             <br>
             <p><b>Guide</b></p>
-            <p>Overview of preferred glyph variants for African languages.</p>
+            <p>Overview of preferred glyph variants for African languages. If a language has a valid <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/languagetags">OT Language Tag</a> add the following code to the locl feature.</p>
+            <p class="example">Sample locl feature code</p>
+            <div class="code">
+                <p>script latn;<br>
+                language &#60;TAG&#62;;<br>
+                sub &#60;GLYPHNAME&#62; by &#60;GLYPHNAME.alt&#62;;</p>
+            </div>
             <p class="example">Eng (014A)</p>
             <p class="exampledesc">For all African languages the preferred form for the uppercase Eng resembles the lowercase n. If the preferred style is already the default design in the font then no further action is necessary. If not, than the preferred style should be added to the font as an alternate.</p>
             <div class="guide">
@@ -159,7 +165,7 @@
                 <figure>
                     <img src="./images/capezh-ga.png" alt="Bhook preference" height="180"></img>
                     <figcaption class="solution">Preferred uppercase ezh for Ga</figcaption>
-
+                </figure>
             </div>
         </div>
         <h3 id="smallcap">Missing Small-Caps</h3>
@@ -168,7 +174,11 @@
             <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
             <li>Requires Small-cap <i>glyph</i></i></li>
             <p><b>Remedy: </b>Add small cap versions of all glyphs reported by the error and ensure the smcp feature is updated. When adding missing small-caps be mindful of the  glyph variants defined above as well as including anchors for all required diacritics.</p>
-
+            <p><b>Guide</b></p>
+            <p class="example">Sample smcp feature code</p>
+            <div class="code">
+                sub &#60;GLYPHNAME&#62; by &#60;GLYPHNAME.smcp&#62;;</p>
+            </div>
         </div>
     </div>
 

@@ -133,7 +133,12 @@ canvas{
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2)
 }
 
-
+.code {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 8px;
+    background-color: rgb(234, 230, 230);
+}
 
 .example {
     margin-left: 20px;
