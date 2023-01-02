@@ -3,8 +3,8 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
-    <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
   </head>
 
   <body>
@@ -60,7 +60,7 @@
     const ctx = document.getElementById('tagOverviewChart').getContext('2d');
 
     async function fontOverviewJSON() {
-      const response = await fetch('./afr_tag_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
+      const response = await fetch('./data/afr_tag_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
       const results = await response.json(); 
       //console.log(results)
       return results;

@@ -85,6 +85,7 @@ li {
 #errors {
     width: 230px;
     height: 40em;
+    font-family: 'Inconsolata', monospace;
 }
 
 select {
@@ -131,3 +132,42 @@ canvas{
     font-size: 14px;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2)
 }
+
+
+
+.example {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 8px;
+    background-color: #3288bd20;
+}
+
+.exampledesc {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+figure {
+    display: inline-block;
+    text-align: center;
+    margin: 10px 10px; /* adjust as needed */
+  }
+
+figure img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figure figcaption.failure {
+    text-align: center;
+    padding: 3px 8px;
+    background-color: #d53e4f50;
+}
+
+figure figcaption.solution {
+    text-align: center;
+    padding: 3px 8px;
+    background-color: #99d59450;
+}
+

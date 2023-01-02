@@ -74,7 +74,7 @@
 
 
     async function glyphSetJSON() {
-      const responseGS = await fetch('./glyph_set.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
+      const responseGS = await fetch('./data/glyph_set.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
       const resultsGS = await responseGS.json();      
       return resultsGS;
     }
@@ -82,7 +82,7 @@
     glyphSetJSON().then(resultsGS => {requiredBases = resultsGS[0].join(" "), requiredMarks = resultsGS[1].join(" "), document.getElementById('glyphs').innerText = requiredBases+"\n\n"+requiredMarks});
 
     async function glyphCoverageJSON() {
-      const responseGC = await fetch('./glyph_coverage.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
+      const responseGC = await fetch('./data/glyph_coverage.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
       const resultsGC = await responseGC.json();      
       return resultsGC;
     }

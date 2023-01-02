@@ -4,8 +4,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako_inflate.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
-    <style> @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap'); </style>
   </head>
   
 
@@ -34,7 +34,7 @@
       
     <div class="header"><h1>Google Fonts Pan-African Latin Gap Analysis</h1></div>
 
-    <div class="body-text">
+    <div id="top" class="body-text">
         <h2>Apples/Bananas</h2>
         <p>This report highlights fonts that require minimal (apples) and extensive (bananas) effort to repair. Apples are fonts that can be easily repaired without the original foundry. It focuses on fonts that only have orphaned mark failures and missing OT locl features. Bananas are fonts that require a alot of new characters to be designed and would likely require involvement from the origin foundry.</p>
         <h3>Usage</h3>
@@ -66,7 +66,7 @@
     document.getElementById('downloadBananas').style.display = "none";
    
     async function fontAnalysisJSON1() {
-      const response1 = await fetch('./afr_lang_summary_1.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const response1 = await fetch('./data/afr_lang_summary_1.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
       const results1 = await response1.arrayBuffer();
       //console.log(results1);
       return results1;
@@ -74,6 +74,7 @@
 
     fontAnalysisJSON1().then(results1 => {data1 = JSON.parse(pako.inflate(new Uint8Array(results1), { to: 'string'})), make_apples(data1, ctx), make_bananas(data1, ctx2)});
 
+    //document.getElementById('apples').innerText = "Loading . . .";
 
     document.getElementById('bananas').style.display = "none";
 
@@ -97,14 +98,14 @@
             document.getElementById('downloadApples').style.display = "block";
             document.getElementById('downloadBananas').style.display = "none";
             document.getElementById('errors').innerHTML = '';
-            document.location='#apples'
+            document.location='#top'
           } else if (button.value == 'chooseBananas') {
             document.getElementById('apples').style.display = "none";
             document.getElementById('bananas').style.display = "block";
             document.getElementById('downloadApples').style.display = "none";
             document.getElementById('downloadBananas').style.display = "block";
             document.getElementById('errors').innerHTML = '';
-            document.location='#bananas'
+            document.location='#top'
 
           }
         }
@@ -125,12 +126,13 @@
 
       if (selection[0].checked) {
         applesChart.destroy();
-        make_apples(data1, ctx)
+        make_apples(data1, ctx);
       } else if (selection[1].checked) {
         bananasChart.destroy();
         make_bananas(data1, ctx2)
       };
       document.getElementById('errors').innerHTML = '';
+      document.location='#top';
 
 
     };
@@ -146,6 +148,7 @@
         make_bananas(data2, ctx2)
       };
       document.getElementById('errors').innerHTML = '';
+      document.location='#top';
 
 
     };
@@ -320,7 +323,7 @@
   };
 
 
-  function make_bananas(data, ctx2){
+  async function make_bananas(data, ctx2){
 
     let dataBananas = data.filter(function(item){
       return item.mbase.count > 90 && item.mmark.count > 5 && item.msmcap.count >= 0;
@@ -417,7 +420,7 @@
   };
 
   async function fontAnalysisJSON2() {
-      const response2 = await fetch('./afr_lang_summary_2.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const response2 = await fetch('./data/afr_lang_summary_2.json.gz', { method: 'GET', mode: 'cors', headers: { 'Content-Type': 'application/json'}});
       const results2 = await response2.arrayBuffer();
       //console.log(results2);
       return results2;

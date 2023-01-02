@@ -57,34 +57,117 @@
             <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
             <li>Some base glyphs were missing: <i>base glyphs...</i></li>
             <li>Some mark glyphs were missing: <i>mark glyphs...</i></li>
-            <p><b>Remedy: </b>Add missing glyphs to font. If the glyphs are found to be in the font source file check to see if any subsetting routines are used to export the font. If so, ensure that the required glyphs are not excluded from the export.</p>
+            <br>
+            <p><b>Remedy</b></p>
+            <p>Add missing glyphs to font. If the glyphs are found to be in the font source file check to see if any subsetting routines are used to export the font. If so, ensure that the required glyphs are not excluded from the export.</p>
         </div>
         <h3 id="orphan">Orphaned Marks</h3>
         <div class="card">
-            <p>The orphaned marks test checks to see if necessary marks for a langauge attach to a base glyph via the OT mark feature. If the mark fails to attach to the base glyph it is reported as an error. If either the base or mark are missing in the font mark attachment cannot be tested. In this case, the error will be reported as "*see missing bases/marks*". </p>
+            <p>The orphaned marks test checks to see if necessary marks for a language attach to a base glyph via the OT mark feature. If the mark fails to attach to the base glyph it is reported as an error. If either the base or mark are missing in the font, then mark attachment cannot be tested. In this case, the error will be reported as "*see missing bases/marks*". </p>
             <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
             <li>No variant glyphs were found for <i>base glyph</i> to <i>base glyph</i></li>
             <li>Shaper produced a .notdef</li>
-            <p><b>Remedy: </b>Ensure that the tested base and mark glyphs have corresponding anchors defined. For "*see missing bases/marks*" errors first add all the necessary glyphs to the font and verify that corresponding anchors are present.</p>
-            <p><b>Guide:</b></p>
+            <br>
+            <p><b>Remedy</b></p>
+            <p>Ensure that the tested base and mark glyphs have corresponding anchors defined. For "*see missing bases/marks*" errors first add all of the necessary base and mark glyphs to the font and in the proces add the appropriate anchors to each.</p>
+            <br>
+            <p><b>Guide</b></p>
+            <p>Below is an example of an orphaned mark error. This first two images show the cause of the error in the font source and the final image shows how to repair the font.</p>
+            <p class="example">orphaned marks: (acutecomb to uni0259)</p>
+            <div class="guide">
+
+                <figure>
+                    <img src="./images/acutecomb.png" alt="acutecomb with anchor" height="400"></img>
+                    <figcaption class="failure">Anchor is present for the mark glyph</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/schwa.png" alt="schwa without anchor" height="400"></img>
+                    <figcaption class="failure">Anchor is missing in the base glyph</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/schwa-fixed.png" alt="schwa with anchor" height="400"></img>
+                    <figcaption class="solution">Solution: Add anchor named "top" to base glyph</figcaption>
+                </figure>
+            </div>
 
         </div>
         <h3 id="variant">No Variant/Missing locl Feature</h3>
         <div class="card">
-            <p>No variant and missing locl feature are related errors. The first check looks for un-encoded glyph variants that are required for certain languages. If a variant is not present in a font, this is not necessarily a failure, as the default form may be the appropriate style. The missing locl feature test checks to see if a target glyph variant is accessed via an OpenType locl feature in the font. This test only runs if the target language has a valid OpenType Lang tag.</p>
+            <p>No variant and missing locl feature are related errors. The first check looks for un-encoded glyph variants that are required for certain languages. If a variant is not present in a font, this is not necessarily a failure, as the default form may be the appropriate style. The missing locl feature test checks to see if a target glyph variant is accessed via an OpenType locl feature in the font. This test only runs if the target language has a valid OpenType Lang tag. If the glyph for which a variant is being searched for is not in the font then the error will be reported as "*see notes on glyph variants*".</p>
             <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
             <li>No variant glyphs were found for <i>glyph</i></i></li>
             <li>The locl feature did not affect <i>glyph</i></li>
-            <p><b>Remedy: </b>For no variant errors use the guide below to determine if the default style of the letter matches the requirements for African languages. If not, add the appropriate variant to the font. For missing locl feature errors update the locl feature to create the proper glyph substitution using the guide below to write the necessary OT code.</p>
-            <p><b>Guide:</b></p>
+            <br>
+            <p><b>Remedy</b></p>
+            <p>For no variant errors use the guide below to determine if the default style of the letter matches the requirements for African languages. If not, add the appropriate variant to the font. For missing locl feature errors update the locl feature to create the proper glyph substitution using the guide below to write the necessary OT code. For "*see notes on glyph variants*" errors first add all of the necessary glyphs to the font then create the appropriate variants.</p>
+            <br>
+            <p><b>Guide</b></p>
+            <p>Overview of preferred glyph variants for African languages.</p>
+            <p class="example">Eng (014A)</p>
+            <p class="exampledesc">For all African languages the preferred form for the uppercase Eng resembles the lowercase n. If the preferred style is already the default design in the font then no further action is necessary. If not, than the preferred style should be added to the font as an alternate.</p>
+            <div class="guide">
+                <figure>
+                    <img src="./images/eng.png" alt="Eng" height="200"></img>
+                    <figcaption class="failure">This style of uppercase eng is not preferred</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/eng-afr.png" alt="Eng African preference" height="200"></img>
+                    <figcaption class="solution">Preferred style for uppercase eng</figcaption>
+                </figure>
+                <p class="example">Bhook (0181)</p>
+                <p class="exampledesc">The uppercase Bhook used for Kpelle in Liberia resembles a Cyrillic Be with a more rounded bowl. The OT language tag for Toma is XPE.</p>
+                <figure>
+                    <img src="./images/bhook.png" alt="Bhook" height="196"></img>
+                    <figcaption class="failure">Standard uppercase bhook</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/bhook-xpe.png" alt="Kpelle Bhook preference" height="196"></img>
+                    <figcaption class="solution">Preferred uppercase bhook for Kpelle</figcaption>
+                </figure>
+                <p class="example">Vhook (01B2)/vhook (028B)</p>
+                <p class="exampledesc">The preferred style of the vhook for Toma resembles a "V" rather than the more rounded standard form. The OT language tag for Toma is TOD0.</p>
+                <figure>
+                    <img src="./images/vhook.png" alt="vhook" height="170"></img>
+                    <figcaption class="failure">Standard lowercase vhook</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/capvhook.png" alt="Vhook" height="170"></img>
+                    <figcaption class="failure">Standard uppercase vhook</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/vhook-toma.png" alt="Toma vhook preference" height="170"></img>
+                    <figcaption class="solution">Preferred lowercase vhook for Toma</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/capvhook-toma.png" alt=" Toma Vhook preference" height="170"></img>
+                    <figcaption class="solution">Preferred uppercase vhook for Toma</figcaption>
+                </figure>
+                <p class="example">Esh (01A9)/Ezh (01B7)</p>
+                <p class="exampledesc">The preferred style of the uppercase esh and ezh for Ga resembles a sigma. The OT language tag for Toma is GAD.</p>
+                <figure>
+                    <img src="./images/capesh.png" alt="Esh" height="180"></img>
+                    <figcaption class="failure">Standard uppercase esh</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/capezh.png" alt="Ezh" height="180"></img>
+                    <figcaption class="failure">Standard uppercase ezh</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/capesh-ga.png" alt="Bhook preference" height="180"></img>
+                    <figcaption class="solution">Preferred uppercase esh for Ga</figcaption>
+                </figure>
+                <figure>
+                    <img src="./images/capezh-ga.png" alt="Bhook preference" height="180"></img>
+                    <figcaption class="solution">Preferred uppercase ezh for Ga</figcaption>
+
+            </div>
         </div>
         <h3 id="smallcap">Missing Small-Caps</h3>
         <div class="card">
             <p>The mising small-caps test check ensures that small cap versions of all exemplar characters exist in the font if the font includes a smcp OpenType feature.</p>
             <p>The equivalent long form error messages from <i>shaperglot</i> are as follows:</p>
             <li>Requires Small-cap <i>glyph</i></i></li>
-            <p><b>Remedy: </b>Add small cap versions of all glyphs reported by the error and ensure the smcp feature is updated.</p>
-            <p><b>Guide:</b></p>
+            <p><b>Remedy: </b>Add small cap versions of all glyphs reported by the error and ensure the smcp feature is updated. When adding missing small-caps be mindful of the  glyph variants defined above as well as including anchors for all required diacritics.</p>
 
         </div>
     </div>
