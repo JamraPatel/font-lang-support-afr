@@ -13,11 +13,15 @@
 
     <div class="sidebar">
       <div class="nav"><a href="./index.html">Dashboard &#62;</a></div>
-      <div class="nav active"><a href="./font-summary.html">&#60; Font Results</a></div>
+      <div class="nav"><a href="./font-summary.html">Font Results &#62;</a></div>
+      <div class="nav"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
+      <div class="nav"><a href="./glyph-analysis.html">Glyph Analysis &#62;</a></div>
+      <div class="nav"><a href="./repairing-fonts.html">Repairing Fonts &#62;</a></div>
+      <div class="nav active"><a href="./gsans-summary.html">&#60; Google Sans Results</a></div>
       <div id="insight">
         <span id="overviewSelect">Filter Alphabetically</span> 
         <select id="selectAlpha" onChange="selectedAlpha(fontSummaryChart)">
-          <option>A</option>
+          <option>GoogleSans</option>
         </select>
         <span id="detailSelect">Sort Options</span>
         <select id="selectSort" onChange="selectedSortOpt(singleFontSummaryChart)">
@@ -28,17 +32,13 @@
         <button id="breakdown">Breakdown</button>
         <button id="back">&#60;-Back</button>
       </div>
-      <div class="nav"><a href="./apples-bananas.html">Apples/Bananas &#62;</a></div>
-      <div class="nav"><a href="./glyph-analysis.html">Glyph Analysis &#62;</a></div>
-      <div class="nav"><a href="./repairing-fonts.html">Repairing Fonts &#62;</a></div>
-      <div class="nav"><a href="./gsans-summary.html">Google Sans Results &#62;</a></div>
     </div>
       
-    <div class="header"><h1>Google Fonts Pan-African Latin Gap Analysis</h1></div>
+    <div class="header"><h1>Google Sans Pan-African Latin Gap Analysis</h1></div>
 
     <div class="body-text">
         <h2>Font Level Results</h2>
-        <p>This report provides a breakdown of the Pan-African Latin support errors for the Google Fonts Library.</p>
+        <p>This report provides a breakdown of the Pan-African Latin support errors for the Google Fonts Library and Google Sans.</p>
         <h3>Usage</h3>
         <ul>
            <li>The report can be filtered alphabetically using the options in the side bar.</li>
@@ -69,7 +69,7 @@
     const ctx2 = document.getElementById('singleFontSummaryChart').getContext('2d');
 
     async function fontSummaryJSON() {
-      const responseSum = await fetch('./data/afr_font_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const responseSum = await fetch('./data/afr_font_overview_gsans.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
       const resultsSum = await responseSum.json();
       return resultsSum;
     }
@@ -83,7 +83,7 @@
 
 
     const selectAlpha = document.getElementById("selectAlpha");
-    const alphabet = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    const alphabet = [];
     for(let i = 0; i < alphabet.length; i++) {
       let opt = alphabet[i];
       let el = document.createElement("option");
@@ -96,11 +96,13 @@
       let fontAlpha = selectAlpha.options[selectAlpha.selectedIndex].text;
       currAlpha = selectAlpha.options[selectAlpha.selectedIndex].index;
       let alphafiltered = []
-      if (fontAlpha != 'All') {
-        alphaFiltered = summary.filter(function(alpha) { return alpha.font[0] == fontAlpha });
-      } else {
-        alphaFiltered = summary;
-      };
+      //if (fontAlpha != 'All') {
+      //  alphaFiltered = summary.filter(function(alpha) { return alpha.font.includes('GoogleSans') });
+      //} else {
+      //  alphaFiltered = summary;
+      //};
+      alphaFiltered = summary;
+
       let alphaSubset = alphaFiltered.sort((a, b) => (a.font > b.font) ? 1: -1);
       fontSummaryChart.destroy();
       make_summary(alphaSubset, ctx, 'redraw');
@@ -180,7 +182,7 @@
 
     let resultsFilt;
     if (state == 'init'){
-      resultsFilt = summary.filter(function(alpha) { return alpha.font[0] == 'A' });
+      resultsFilt = summary.filter(function(alpha) { return alpha.font.includes('GoogleSans')});
     } else {
       resultsFilt = summary;
     };
@@ -318,20 +320,20 @@
 
 
   async function fontBreakdownJSON1() {
-      const responseBreak1 = await fetch('./data/afr_lang_summary_1.json.gz', {delay: 300, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const responseBreak1 = await fetch('./data/afr_lang_summary_gsans.json.gz', {delay: 300, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
       const resultsBreak1 = await responseBreak1.arrayBuffer();
       return resultsBreak1;
     }
 
     fontBreakdownJSON1().then(resultsBreak1 => {make_breakdown([], ctx2), breakdown1 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak1), { to: 'string'}))});
 
-    async function fontBreakdownJSON2() {
-      const responseBreak2 = await fetch('./data/afr_lang_summary_2.json.gz', {delay: 500, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
-      const resultsBreak2 = await responseBreak2.arrayBuffer();
-      return resultsBreak2;
-    }
+    //async function fontBreakdownJSON2() {
+    //  const responseBreak2 = await fetch('./data/afr_lang_summary_2.json.gz', {delay: 500, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+    //  const resultsBreak2 = await responseBreak2.arrayBuffer();
+    //  return resultsBreak2;
+   // }
 
-    fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak2), { to: 'string'}))});
+    //fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak2), { to: 'string'}))});
 
 
   function make_breakdown(breakdown, ctx2){

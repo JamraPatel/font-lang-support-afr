@@ -1,0 +1,842 @@
+[
+ {
+  "font": "GoogleSans-Italic[GRAD,opsz,wght]",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to uni025B) (uni0302 to uni025B) (uni030C to uni025B) (uni0304 to uni025B) *see missing bases/marks* (acutecomb to uni025B) (tildecomb to uni025B) (uni0327 to uni025B) (uni0327 to uni025B.sc) (uni0327 to uni0254.sc) (uni0308 to uni025B) (uni0331 to uni025B) (uni0331 to uni0190) (uni0308 to uni0331) (uni0331 to uni0186) (uni0331 to uni025B.sc) (uni0331 to uni0254.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSans[GRAD,opsz,wght]",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (uni0327 to uni025B.sc) (uni0331 to uni0190) (uni0331 to uni025B.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-opsz17-wght380-GRAD200",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-opsz18-wght380-GRAD200",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSansItalic-opsz17-wght380-GRAD-50",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSans-opsz18-wght380-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSansItalic-opsz18-wght380-GRAD200",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSansItalic-opsz17-wght734-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSans-opsz17-wght734-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSansItalic-opsz17-wght380-GRAD200",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSansItalic-opsz18-wght380-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSans-opsz17-wght380-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-opsz18-wght380-GRAD-50",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSansItalic-opsz17-wght380-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSansItalic-opsz18-wght380-GRAD-50",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSans-opsz18-wght734-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-opsz17-wght380-GRAD-50",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (cedillacomb to eopen.sc) (macronbelowcomb to Eopen) (macronbelowcomb to eopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSansItalic-opsz18-wght734-GRAD0",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to eopen) (circumflexcomb to eopen) (caroncomb to eopen) (macroncomb to eopen) *see missing bases/marks* (acutecomb to eopen) (tildecomb to eopen) (cedillacomb to eopen) (cedillacomb to eopen.sc) (cedillacomb to oopen.sc) (dieresiscomb to eopen) (macronbelowcomb to eopen) (macronbelowcomb to Eopen) (dieresiscomb to macronbelowcomb) (macronbelowcomb to Oopen) (macronbelowcomb to eopen.sc) (macronbelowcomb to oopen.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (Bhook) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSans-BoldItalic",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to uni025B) (uni0302 to uni025B) (uni030C to uni025B) (uni0304 to uni025B) *see missing bases/marks* (acutecomb to uni025B) (tildecomb to uni025B) (uni0327 to uni025B) (uni0327 to uni025B.sc) (uni0327 to uni0254.sc) (uni0308 to uni025B) (uni0331 to uni025B) (uni0331 to uni0190) (uni0308 to uni0331) (uni0331 to uni0186) (uni0331 to uni025B.sc) (uni0331 to uni0254.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSansText-Bold",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (uni0327 to uni025B.sc) (uni0331 to uni0190) (uni0331 to uni025B.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-Regular",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (uni0327 to uni025B.sc) (uni0331 to uni0190) (uni0331 to uni025B.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSansText-MediumItalic",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to uni025B) (uni0302 to uni025B) (uni030C to uni025B) (uni0304 to uni025B) *see missing bases/marks* (acutecomb to uni025B) (tildecomb to uni025B) (uni0327 to uni025B) (uni0327 to uni025B.sc) (uni0327 to uni0254.sc) (uni0308 to uni025B) (uni0331 to uni025B) (uni0331 to uni0190) (uni0308 to uni0331) (uni0331 to uni0186) (uni0331 to uni025B.sc) (uni0331 to uni0254.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSansText-BoldItalic",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to uni025B) (uni0302 to uni025B) (uni030C to uni025B) (uni0304 to uni025B) *see missing bases/marks* (acutecomb to uni025B) (tildecomb to uni025B) (uni0327 to uni025B) (uni0327 to uni025B.sc) (uni0327 to uni0254.sc) (uni0308 to uni025B) (uni0331 to uni025B) (uni0331 to uni0190) (uni0308 to uni0331) (uni0331 to uni0186) (uni0331 to uni025B.sc) (uni0331 to uni0254.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSansText-Regular",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (uni0327 to uni025B.sc) (uni0331 to uni0190) (uni0331 to uni025B.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-Bold",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (uni0327 to uni025B.sc) (uni0331 to uni0190) (uni0331 to uni025B.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-Italic",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to uni025B) (uni0302 to uni025B) (uni030C to uni025B) (uni0304 to uni025B) *see missing bases/marks* (acutecomb to uni025B) (tildecomb to uni025B) (uni0327 to uni025B) (uni0327 to uni025B.sc) (uni0327 to uni0254.sc) (uni0308 to uni025B) (uni0331 to uni025B) (uni0331 to uni0190) (uni0308 to uni0331) (uni0331 to uni0186) (uni0331 to uni025B.sc) (uni0331 to uni0254.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSans-Medium",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (uni0327 to uni025B.sc) (uni0331 to uni0190) (uni0331 to uni025B.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSansText-Medium",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 4,
+   "enum": "*see missing bases/marks* (uni0327 to uni025B.sc) (uni0331 to uni0190) (uni0331 to uni025B.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 717
+ },
+ {
+  "font": "GoogleSans-MediumItalic",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to uni025B) (uni0302 to uni025B) (uni030C to uni025B) (uni0304 to uni025B) *see missing bases/marks* (acutecomb to uni025B) (tildecomb to uni025B) (uni0327 to uni025B) (uni0327 to uni025B.sc) (uni0327 to uni0254.sc) (uni0308 to uni025B) (uni0331 to uni025B) (uni0331 to uni0190) (uni0308 to uni0331) (uni0331 to uni0186) (uni0331 to uni025B.sc) (uni0331 to uni0254.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ },
+ {
+  "font": "GoogleSansText-Italic",
+  "mbase": {
+   "count": 126,
+   "enum": "\u0196 \u01b2 \u0269 \u028b \ua78b \ua78c \u2183 \u2184 \u0194 \u0263 \u0197 \u0197\u0300 \u0197\u0302 \u0197\u0304 \u0197\u030c \u0244 \u0244\u0300 \u0244\u0302 \u0244\u0304 \u0244\u030c \u0268 \u0268\u0300 \u0268\u0302 \u0268\u0304 \u0268\u030c \u0289 \u0289\u0300 \u0289\u0302 \u0289\u0304 \u0289\u030c \u0294 \u0189 \u0256 \u0191 \u019d \u0272 A\u1dc6 A\u1dc7 E\u1dc6 E\u1dc7 I\u1dc6 I\u1dc7 O\u1dc6 O\u1dc7 U\u1dc6 U\u1dc7 a\u1dc6 a\u1dc7 e\u1dc6 e\u1dc7 i\u1dc6 i\u1dc7 o\u1dc6 o\u1dc7 u\u1dc6 u\u1dc7 \u0186\u1dc6 \u0186\u1dc7 \u0190\u1dc6 \u0190\u1dc7 \u0254\u1dc6 \u0254\u1dc7 \u025b\u1dc6 \u025b\u1dc7 \u01b1 \u028a \u018e \u01dd \u1d7d \u2c63 \u0266 \u027e \ua7aa \u0251 \u2c6d \u0245 \u028c \u029d \ua7b2 \u0244\u0301 \u0244\u0308 \u0289\u0301 \u0289\u0308 \u024c \u024d \u01ca \u01cc \u018e\u0301 \u01dd\u0301 \u02a4 \u1e2c \u1e2d \u1e74 \u1e75 \u01c0 \u01c1 \u01c2 \u01c3 \u018e\u0302 \u018e\u0304 \u018e\u030c \u01dd\u0302 \u01dd\u0304 \u01dd\u030c G\u02b7 K\u02b7 g\u02b7 k\u02b7 \u0187 \u0188 \u01a4 \u01a5 \u01ac \u01ad \u026a \ua7ae \u0193 \u0260 \u1e12 \u1e13 \u1e3c \u1e3d \u1e4a \u1e4b \u1e70 \u1e71"
+  },
+  "mmark": {
+   "count": 10,
+   "enum": "\u25cc\u035f \u25cc\u1dc6 \u25cc\u1dc7 \u25cc\u0330 \u25cc\u1dc5 \u25cc\u0325 \u25cc\u0320 \u25cc\u030d \u25cc\u032f \u25cc\u032d"
+  },
+  "omark": {
+   "count": 17,
+   "enum": "(gravecomb to uni025B) (uni0302 to uni025B) (uni030C to uni025B) (uni0304 to uni025B) *see missing bases/marks* (acutecomb to uni025B) (tildecomb to uni025B) (uni0327 to uni025B) (uni0327 to uni025B.sc) (uni0327 to uni0254.sc) (uni0308 to uni025B) (uni0331 to uni025B) (uni0331 to uni0190) (uni0308 to uni0331) (uni0331 to uni0186) (uni0331 to uni025B.sc) (uni0331 to uni0254.sc)"
+  },
+  "nvariant": {
+   "count": 3,
+   "enum": "(Eng) (uni0181) *see notes on glyph variants*"
+  },
+  "mfea": {
+   "count": 0,
+   "enum": ""
+  },
+  "msmcap": {
+   "count": 32,
+   "enum": "(\u0269) (\u028b) (\ua78c) (\u2184) (\u0263) (\u0268) (\u0289) (\u0256) (\u0192) (\u0272) (\u028a) (\u01dd) (\u1d7d) (\u0266) (\u027e) (\u0251) (\u028c) (\u029d) (\u024d) (\u01cc) (\u02a4) (\u1e2d) (\u1e75) (\u0188) (\u01a5) (\u01ad) (\u026a) (\u0260) (\u1e13) (\u1e3d) (\u1e4b) (\u1e71)"
+  },
+  "weight": 730
+ }
+]
