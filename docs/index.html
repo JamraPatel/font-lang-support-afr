@@ -129,9 +129,19 @@
         //subset = summary.sort((a, b) => (a.tag > b.tag) ? 1: -1);
 
         let summarySort = summary.sort((a, b) => (a.pass.count < b.pass.count) ? 1: -1);
+        let passing = 0;
+        let failing = 0;
+        
+        if ('pass' in  summarySort[0] ) {
+          passing = summarySort[0].pass.count
+        };
 
-        let total = summarySort[0].pass.count + summarySort[0].fail.count
+        if ('fail' in  summarySort[0]) {
+          failing = summarySort[0].fail.count
+        };
 
+        let total = passing + failing;
+        
         tagOverviewChart = new Chart(ctx, {
             type: 'bar',
             data: {
