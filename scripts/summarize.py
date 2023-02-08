@@ -121,7 +121,7 @@ def format_errors(lang, font, failures):
             load_font_details(font, 'omark', ["*see missing bases/marks*"])
         elif "Shaper didn't attach" in failure:
             details = failure.split("Shaper didn't attach ")
-            formatted_detail = f" ({details[1]})"
+            formatted_detail = f"({details[1]})"
             count = omarks["count"] + 1
             enum = omarks["enum"]
             enum += formatted_detail
@@ -133,7 +133,7 @@ def format_errors(lang, font, failures):
                 nvariants.update({"count": 1, "enum": "*see notes on glyph variants*"})
                 load_font_details(font, 'nvariant', ["*see notes on glyph variants*"])
             else:
-                formatted_detail = f" ({details[1]})"
+                formatted_detail = f"({details[1]})"
                 count = nvariants["count"] + 1
                 enum = nvariants["enum"]
                 enum += formatted_detail
@@ -141,7 +141,7 @@ def format_errors(lang, font, failures):
                 load_font_details(font, 'nvariant', [formatted_detail])
         elif "Requires Small-cap" in failure:
             details = failure.split(";")
-            formatted_detail = f" ({details[0][-1]})"
+            formatted_detail = f"({details[0][-1]})"
             count = msmcaps["count"] + 1
             enum = msmcaps["enum"]
             enum += formatted_detail
@@ -149,7 +149,7 @@ def format_errors(lang, font, failures):
             load_font_details(font, 'msmcap', [formatted_detail])
         elif "The locl feature did not affect" in failure:
             details = failure.split("The locl feature did not affect ")
-            formatted_detail = f" ({details[1]})"
+            formatted_detail = f"({details[1]})"
             count = mfeas["count"] + 1
             enum = mfeas["enum"]
             enum += formatted_detail
