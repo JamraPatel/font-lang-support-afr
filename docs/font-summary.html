@@ -16,7 +16,7 @@
       <div class="nav active"><a href="./font-summary.html">&#60; Font Results</a></div>
       <div id="insight">
         <span id="overviewSelect">Filter Alphabetically</span> 
-        <select id="selectAlpha" onChange="selectedAlpha(fontSummaryChart)">
+        <select id="selectAlpha" onChange="selectedAlpha(familySummaryChart)">
           <option>A</option>
         </select>
         <span id="detailSelect">Sort Options</span>
@@ -25,6 +25,7 @@
         </select>
         <textarea name="errors" id="errors"></textarea>
         <button id="copy">Copy Errors</button>
+        <button id="expand">Expand Family</button>
         <button id="breakdown">Breakdown</button>
         <button id="back">&#60;-Back</button>
       </div>
@@ -40,12 +41,16 @@
         <p>This report provides a breakdown of the Pan-African Latin support errors for the Google Fonts Library.</p>
         <h3>Usage</h3>
         <ul>
-           <li>The report can be filtered alphabetically using the options in the side bar.</li>
-          <li>For a breakdown of errors by language tag choose the font of interest in the pull down menu.</li>
+          <li>The main screen shows the error report by font family. The report can be filtered alphabetically using the options in the side bar.</li>
+          <li>Selecting a font family will shows the cumulative errors in the side bar and provides an option to expand the family.</li>
+          <li>Once an individual font is selected a breakdown of errors by language tag is available by pressing the breakdown button.</li>
           <li>Selecting any row in the chart will dump the errors in the side bar. Clicking on error items in the legend will toggle them on/off in the chart.</li>
         </ul>
     </div>
 
+    <div id="family">
+      <canvas id="familySummaryChart"></canvas>
+    </div>
     <div id="overview">
         <canvas id="fontSummaryChart"></canvas>
     </div>
@@ -55,17 +60,30 @@
 
 
   <script>
+    const emptyObject = [{'font': "EMPTY", 'mbase': {'count': 0, 'enum': ''}, 'mmark': {'count': 0, 'enum': ''}, 'omark': {'count': 0, 'enum': ''}, 'nvariant': {'count': 0, 'enum': ''}, 'mfea': {'count': 0, 'enum': ''}, 'msmcap': {'count': 0, 'enum': ''}}];
     let summary = [];
+    let summaryFam = [];
     let breakdown1 = [];
     let breakdown2 = [];
+    let origin = "";
 
     let currBreakdown;
     let currAlpha;
+    let familySummaryChart;
     let fontSummaryChart;
     let singleFontSummaryChart;
 
-    const ctx = document.getElementById('fontSummaryChart').getContext('2d');
-    const ctx2 = document.getElementById('singleFontSummaryChart').getContext('2d');
+    const ctx = document.getElementById('familySummaryChart').getContext('2d');
+    const ctx2 = document.getElementById('fontSummaryChart').getContext('2d');
+    const ctx3 = document.getElementById('singleFontSummaryChart').getContext('2d');
+
+    async function familySummaryJSON() {
+      const responseFam = await fetch('./data/afr_family_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+      const resultsFam = await responseFam.json();
+      return resultsFam;
+    }
+    
+    familySummaryJSON().then(resultsFam=> {make_family(resultsFam, ctx, 'init'), summaryFam = resultsFam});
 
     async function fontSummaryJSON() {
       const responseSum = await fetch('./data/afr_font_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
@@ -73,9 +91,11 @@
       return resultsSum;
     }
     
-    fontSummaryJSON().then(resultsSum=> {make_summary(resultsSum, ctx, 'init'), summary = resultsSum});
-   
+    fontSummaryJSON().then(resultsSum=> {summary = resultsSum});
+    console.log(emptyObject);
+    make_summary(emptyObject, ctx2);
 
+    document.getElementById('overview').style.display = "none";
     document.getElementById('detailed').style.display = "none";
     document.getElementById('selectSort').style.display = "none";
     document.getElementById('detailSelect').style.display = "none";
@@ -96,13 +116,13 @@
       currAlpha = selectAlpha.options[selectAlpha.selectedIndex].index;
       let alphafiltered = []
       if (fontAlpha != 'All') {
-        alphaFiltered = summary.filter(function(alpha) { return alpha.font[0] == fontAlpha });
+        alphaFiltered = summaryFam.filter(function(alpha) { return alpha.font[0] == fontAlpha });
       } else {
-        alphaFiltered = summary;
+        alphaFiltered = summaryFam;
       };
       let alphaSubset = alphaFiltered.sort((a, b) => (a.font > b.font) ? 1: -1);
-      fontSummaryChart.destroy();
-      make_summary(alphaSubset, ctx, 'redraw');
+      familySummaryChart.destroy();
+      make_family(alphaSubset, ctx, 'redraw');
       //document.getElementById('detailed').style.display = "none";
       //document.getElementById('overview').style.display = "block";
       document.location='#overview'
@@ -123,7 +143,7 @@
       let selectedOpt = selectSort.options[selectSort.selectedIndex].text;
       let optFiltered = []
       if (selectedOpt == 'Alphabetically') {
-       optFiltered = currBreakdown.sort((a, b) => (a.tag < b.tag) ? 1: -1);
+        optFiltered = currBreakdown.sort((a, b) => (a.tag < b.tag) ? 1: -1);
       } else if (selectedOpt == "Ascending") {
         optFiltered = currBreakdown.sort((a, b) => ((a.mbase.count + a.mmark.count + a.omark.count + a.nvariant.count + a.mfea.count + a.msmcap.count) < (b.mbase.count + b.mmark.count + b.omark.count + b.nvariant.count + b.mfea.count + b.msmcap.count)) ? 1: -1);
       } else if (selectedOpt == "Descending") {
@@ -148,23 +168,41 @@
 
     document.getElementById("back").onclick = function() {
       console.log("back pressed")
-      document.getElementById('selectAlpha').style.display = "block";
-      document.getElementById('selectAlpha').selectedIndex = currAlpha;
-      document.getElementById('overviewSelect').style.display = "block";
-      document.getElementById('selectSort').style.display = "none";
-      document.getElementById('detailSelect').style.display = "none";
-      document.getElementById('detailed').style.display = "none";
-      document.getElementById('overview').style.display = "block";
-      document.getElementById('back').style.display = "none";
-      document.getElementById('breakdown').style.display = "none";
-      document.getElementById('errors').innerHTML = '';
-      document.location='#overview'
+      console.log(origin)
+      if (origin == "overview"){
+        document.getElementById('selectAlpha').style.display = "block";
+        document.getElementById('selectAlpha').selectedIndex = currAlpha;
+        document.getElementById('overviewSelect').style.display = "block";
+        document.getElementById('selectSort').style.display = "none";
+        document.getElementById('detailSelect').style.display = "none";
+        document.getElementById('overview').style.display = "none";
+        document.getElementById('family').style.display = "block";
+        document.getElementById('back').style.display = "none";
+        document.getElementById('breakdown').style.display = "none";
+        document.getElementById('errors').innerHTML = '';
+        document.location='#family'
+      }else if (origin == "detailed") {
+        document.getElementById('selectAlpha').style.display = "none";
+        document.getElementById('selectAlpha').selectedIndex = currAlpha;
+        document.getElementById('overviewSelect').style.display = "none";
+        document.getElementById('selectSort').style.display = "none";
+        document.getElementById('detailSelect').style.display = "none";
+        document.getElementById('detailed').style.display = "none";
+        document.getElementById('overview').style.display = "block";
+        document.getElementById('back').style.display = "block";
+        document.getElementById('breakdown').style.display = "none";
+        document.getElementById('errors').innerHTML = '';
+        origin = "overview"
+        document.location='#overview'
+      };
     };
 
 
     function resizeChart(chart, data) {
       let uniqueEntries;
-      if (chart == fontSummaryChart) {
+      if (chart == familySummaryChart) {
+        uniqueEntries = [...new Set(data.map((fonts) => fonts.font))];
+      } else if (chart == fontSummaryChart) {
         uniqueEntries = [...new Set(data.map((fonts) => fonts.font))];
       } else if (chart == singleFontSummaryChart) {
         uniqueEntries = [...new Set(data.map((tags) => tags.tag))];
@@ -175,17 +213,152 @@
     };
 
 
-  function make_summary(summary, ctx, state) {
+    function make_family(summaryFam, ctx, state){
 
-    let resultsFilt;
-    if (state == 'init'){
-      resultsFilt = summary.filter(function(alpha) { return alpha.font[0] == 'A' });
-    } else {
-      resultsFilt = summary;
-    };
-    let summarySort = resultsFilt.sort((a, b) => (a.font > b.font) ? 1: -1);
+      let resultsFilt;
+      if (state == 'init'){
+        resultsFilt = summaryFam.filter(function(alpha) { return alpha.font[0] == 'A' });
+      } else {
+        resultsFilt = summaryFam;
+      };
+      let summarySort = resultsFilt.sort((a, b) => (a.font > b.font) ? 1: -1);
+      
+      familySummaryChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          datasets: [{
+            label: 'missing base',
+            data: summarySort,
+            backgroundColor: '#3288bd90',
+            parsing: {
+              xAxisKey: 'mbase.count'
+            }, 
+            }, {
+            label: 'missing mark',
+            data: summarySort,
+            backgroundColor: '#99d59490',
+            parsing: {
+              xAxisKey: 'mmark.count'
+            },
+            }, {
+            label: 'orphaned marks',
+            data: summarySort,
+            backgroundColor: '#e6f59890',
+            parsing: {
+              xAxisKey: 'omark.count'
+            },
+          }, {
+            label: 'no variant',
+            data: summarySort,
+            backgroundColor: '#fee08b90',
+            parsing: {
+              xAxisKey: 'nvariant.count'
+            },
+          }, {
+            label: 'missing locl fea',
+            data: summarySort,
+            backgroundColor: '#fc8d5990',
+            parsing: {
+              xAxisKey: 'mfea.count'
+            },
+          }, {
+            label: 'missing small-cap',
+            data: summarySort,
+            backgroundColor: '#d53e4f90',
+            parsing: {
+              xAxisKey: 'msmcap.count'
+            },
+            }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          minBarLenth: 20,
+          plugins: {
+            tooltip: {
+              enabled: true
+            },
+            title: {
+                display: true,
+                text: 'Errors by Font Family'
+            },
+          },
+          parsing: {
+              yAxisKey: 'font',
+          },
+          indexAxis: 'y',
+          scales: {
+            x: {
+              stacked: true
 
-    fontSummaryChart = new Chart(ctx, {
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              offset: true,
+              ticks: {
+                callback: function(value, index, ticks_array) {
+                let characterLimit = 35;
+                  let label = this.getLabelForValue(value);
+                  if ( label.length >= characterLimit) {
+                      return label.slice(0, label.length).substring(0, characterLimit -1).trim() + '...';
+                  }
+                  return label;
+              }
+              }
+            }
+          },
+          onClick(e) {
+              const activePoints = familySummaryChart.getElementsAtEventForMode(e, 'nearest', {
+                  intersect: true
+              }, false)
+              const [{
+                  index
+              }] = activePoints;
+              document.getElementById('errors').innerHTML = ("Cumulative Errors for Family: "+summarySort[index].font+"\n\n" + "missing bases: "+summarySort[index].mbase.enum +"\n\nmissing marks: "+summarySort[index].mmark.enum+"\n\norphaned marks: "+summarySort[index].omark.enum+"\n\nno variant: "+summarySort[index].nvariant.enum+"\n\nmissing locl fea: "+summarySort[index].mfea.enum+"\n\nmissing small-caps: "+summarySort[index].msmcap.enum);
+              document.getElementById('expand').style.display = "block";
+              document.getElementById('expand').onclick = function() {
+              let familyName = summarySort[index].font;
+
+              let selectedFamilyData;
+              selectedFamilyData = summary.filter(function(singlefamily) { return singlefamily.font.includes(familyName) });
+              console.log(selectedFamilyData);
+              let sortedFamilyData = selectedFamilyData.sort((a, b) => (a.tag > b.tag) ? 1: -1);
+              console.log(summary);
+              fontSummaryChart.destroy();
+              make_summary(sortedFamilyData, ctx2);
+              document.getElementById('selectAlpha').style.display = "none";
+              document.getElementById('overviewSelect').style.display = "none";
+              document.getElementById('family').style.display = "none";
+              document.getElementById('overview').style.display = "block";
+              document.getElementById('back').style.display = "block";
+              document.getElementById('expand').style.display = 'none';
+              //document.getElementById('selectAlpha').selectedIndex = 0;
+              document.location='#overview';
+              currBreakdown = sortedFamilyData;
+            };
+          }
+        }
+      });
+      familySummaryChart.update();
+      resizeChart(familySummaryChart, summarySort);
+
+      };
+    
+
+
+  function make_summary(summary, ctx2) {
+    origin = "overview";
+
+    //let resultsFilt;
+    //if (state == 'init'){
+    //  resultsFilt = summary.filter(function(alpha) { return alpha.font[0] == 'A' });
+    //} else {
+    //  resultsFilt = summary;
+    //};
+    let summarySort = summary.sort((a, b) => (a.font > b.font) ? 1: -1);
+
+    fontSummaryChart = new Chart(ctx2, {
       type: 'bar',
       data: {
         datasets: [{
@@ -293,7 +466,7 @@
 
               let sortedFontData = selectedFontData.sort((a, b) => (a.tag > b.tag) ? 1: -1);
               singleFontSummaryChart.destroy();
-              make_breakdown(sortedFontData, ctx2);
+              make_breakdown(sortedFontData, ctx3);
               document.getElementById('selectAlpha').style.display = "none";
               document.getElementById('overviewSelect').style.display = "none";
               document.getElementById('selectSort').style.display = "block";
@@ -306,6 +479,7 @@
               document.location='#detailed'
               currBreakdown = sortedFontData;
             };
+
         }
       }
 
@@ -320,24 +494,25 @@
       const responseBreak1 = await fetch('./data/afr_lang_summary_1.json.gz', {delay: 300, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
       const resultsBreak1 = await responseBreak1.arrayBuffer();
       return resultsBreak1;
-    }
+  }
 
-    fontBreakdownJSON1().then(resultsBreak1 => {make_breakdown([], ctx2), breakdown1 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak1), { to: 'string'}))});
+  fontBreakdownJSON1().then(resultsBreak1 => {breakdown1 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak1), { to: 'string'}))});
+  make_breakdown(emptyObject, ctx3);
 
-    async function fontBreakdownJSON2() {
-      const responseBreak2 = await fetch('./data/afr_lang_summary_2.json.gz', {delay: 500, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
-      const resultsBreak2 = await responseBreak2.arrayBuffer();
-      return resultsBreak2;
-    }
+  async function fontBreakdownJSON2() {
+    const responseBreak2 = await fetch('./data/afr_lang_summary_2.json.gz', {delay: 500, method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}});
+    const resultsBreak2 = await responseBreak2.arrayBuffer();
+    return resultsBreak2;
+  }
 
-    fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak2), { to: 'string'}))});
+  fontBreakdownJSON2().then(resultsBreak2 => {breakdown2 = JSON.parse(pako.inflate(new Uint8Array(resultsBreak2), { to: 'string'}))});
 
 
-  function make_breakdown(breakdown, ctx2){
-
+  function make_breakdown(breakdown, ctx3){
+    origin = "detailed";
     let details = breakdown
 
-    singleFontSummaryChart = new Chart(ctx2, {
+    singleFontSummaryChart = new Chart(ctx3, {
       type: 'bar',
       data: {
         datasets: [{
