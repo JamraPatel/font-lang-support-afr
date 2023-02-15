@@ -38,11 +38,16 @@
     <div class="body-text">
       <h2>Missing GF Lang Data</h2>
       <p>The following list of tags do not have exemplar data in <i>gflanguages</i></p>
-      <p class="card", id="tags"> stuff here</p>
-  </div>
+      <p class="card", id="tags">loading . . .</p>
+    </div>
+    <div class="body-text">
+      <h2>Required OT Language Tags</h2>
+      <p>The following list of languages that need OpenType language tags for improved locl support.
+      <p class="card", id="rtags">loading . . .</p>
+    </div>
     <div class="body-text">
         <h2>Data Freshness</h2>
-        <p class="card", id="time"> stuff here</p>
+        <p class="card", id="time">loading . . .</p>
     </div>
 
 
@@ -58,11 +63,19 @@
     const PX = ['mlg', 'sot', 'kin','ful', 'sna', 'tsn', 'wol', 'lin', 'run', 'nso'];
 
     const ctx = document.getElementById('tagOverviewChart').getContext('2d');
+    const rtags = document.getElementById('rtags');
+
+    async function requiredOTJSON() {
+      const response = await fetch('./data/required_ot_lang_tags.txt', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/txt',}});
+      const results = await response.text(); 
+      return results;
+    };
+
+    requiredOTJSON().then(results => {rtags.innerText = results});
 
     async function fontOverviewJSON() {
       const response = await fetch('./data/afr_tag_overview.json', { method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json',}});
       const results = await response.json(); 
-      //console.log(results)
       return results;
     };
 
@@ -141,7 +154,7 @@
         };
 
         let total = passing + failing;
-        
+
         tagOverviewChart = new Chart(ctx, {
             type: 'bar',
             data: {
