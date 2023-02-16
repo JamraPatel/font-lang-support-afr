@@ -6,38 +6,30 @@ import argparse
 
 
 
-summary = open("afr_lang_summary.json", "w", encoding='utf8')
-overview = open("afr_font_overview.json", "w", encoding='utf8')
-#coverage = open("afr_tag_coverage.json", "w", encoding='utf8')
+#summary = open("afr_lang_summary.json", "w", encoding='utf8')
+sliced1 = open("./../data/afr_lang_summary_1.json", "w", encoding='utf8')
+sliced2 = open("./../data/afr_lang_summary_2.json", "w", encoding='utf8')
+
+overview = open("./../data/afr_font_overview.json", "w", encoding='utf8')
+family_overview = open("./../data/afr_family_overview.json", "w", encoding='utf8')
+
 
 font_details = []
 tag_analysis = []
-
-def streamInYAML(stream):
-    y = stream.readline()
-    cont = 1
-    while cont:
-        l = stream.readline()
-        if len(l) == 0:
-            cont = 0
-        else:
-            if not l.startswith('-'):
-                y = y + l
-            else:
-                yield yaml.safe_load(y)
-                y = l
+family_details = []
 
 
-def listToString(inList):
+
+'''def listToString(inList):
     """ Convert list to String """
     ret = ''
     for line in inList:
         if line:
             ret = ret + line + ' '
-    return ret
+    return ret'''
 
 
-
+# Compile errors for all languages by font
 def load_font_details(font, type, errors):
     if not font_details:
             newrecord = {'font': font, 'mbase': {'count': 0, 'enum': []}, 'mmark': {'count': 0, 'enum': []}, 'omark': {'count': 0, 'enum': []}, 'nvariant': {'count': 0, 'enum': []}, 'mfea': {'count': 0, 'enum': []}, 'msmcap': {'count': 0, 'enum': []}}
@@ -56,6 +48,71 @@ def load_font_details(font, type, errors):
             font_details.append(newrecord)
 
 
+# Compile errors for all languages by font family
+def family_summary(data):
+    last_family = ""
+    for idf, item in enumerate(data):
+        curr_font = item.get('font')
+        curr_font_split = str(curr_font).split('-')
+        curr_family = curr_font_split[0]
+        if last_family == curr_family:
+            get_family = {k: v for d in family_details for k, v in d.items()}
+            if get_family['mbase'] != item['mbase']:
+                list_orig = list(get_family['mbase']['enum'].split(' '))
+                list_add = list(item['mbase']['enum'].split(' '))
+                for glyph in list_add:
+                    if glyph not in list_orig:
+                        list_orig.append(glyph)
+                get_family['mbase']['enum'] = ' '.join(list_orig)
+                get_family['mbase']['count'] = len(list_orig)
+            if get_family['mmark'] != item['mmark']:
+                list_orig = list(get_family['mmark']['enum'].split(' '))
+                list_add = list(item['mmark']['enum'].split(' '))
+                for glyph in list_add:
+                    if glyph not in list_orig:
+                        list_orig.append(glyph)
+                get_family['mmark']['enum'] = ' '.join(list_orig)
+                get_family['mmark']['count'] = len(list_orig)
+            if get_family['omark'] != item['omark']:
+                list_orig = list(get_family['omark']['enum'].split(' '))
+                list_add = list(item['omark']['enum'].split(' '))
+                for glyph in list_add:
+                    if glyph not in list_orig:
+                        list_orig.append(glyph)
+                get_family['omark']['enum'] = ' '.join(list_orig)
+                get_family['omark']['count'] = len(list_orig)
+            if get_family['nvariant'] != item['nvariant']:
+                list_orig = list(get_family['nvariant']['enum'].split(' '))
+                list_add = list(item['nvariant']['enum'].split(' '))
+                for glyph in list_add:
+                    if glyph not in list_orig:
+                        list_orig.append(glyph)
+                get_family['nvariant']['enum'] = ' '.join(list_orig)
+                get_family['nvariant']['count'] = len(list_orig)
+            if get_family['mfea'] != item['mfea']:
+                list_orig = list(get_family['mfea']['enum'].split(' '))
+                list_add = list(item['mfea']['enum'].split(' '))
+                for glyph in list_add:
+                    if glyph not in list_orig:
+                        list_orig.append(glyph)
+                get_family['mfea']['enum'] = ' '.join(list_orig)
+                get_family['mfea']['count'] = len(list_orig)
+            if get_family['msmcap'] != item['msmcap']:
+                list_orig = list(get_family['msmcap']['enum'].split(' '))
+                list_add = list(item['msmcap']['enum'].split(' '))
+                for glyph in list_add:
+                    if glyph not in list_orig:
+                        list_orig.append(glyph)
+                get_family['msmcap']['enum'] = ' '.join(list_orig)
+                get_family['msmcap']['count'] = len(list_orig)
+        else:
+            family = item
+            family['font'] = curr_family
+            family_details.append(item)
+        last_family = curr_family
+
+
+# Update error counts for the aggregated font errors. Includes experimental scoring system to set priorities. This is not currently implemented in the report.
 def tally_details(data):
     score = 0
     for idf, font in enumerate(data):
@@ -86,14 +143,13 @@ def tally_details(data):
     
         font_details[idf]['weight'] = score
 
-def tag_coverage():
+
+'''def tag_coverage():
     all_mbase = set([x['mbase']['enum'] for x in font_details])
-    unique_mbase = set([j for i in all_mbase for j in i])
+    unique_mbase = set([j for i in all_mbase for j in i])'''
 
 
-    
-
-
+# Convert long form shaperglot errors into reporting categories  
 def format_errors(lang, font, failures):
     collected = {"tag": lang, "font": font, "mbase": {"count": 0, "enum": ""},  "mmark": {"count": 0, "enum": ""}, "omark": {"count": 0, "enum": ""}, "nvariant": {"count": 0, "enum": ""}, "mfea": {"count": 0, "enum": ""}, "msmcap": {"count": 0, "enum": ""}}
     omarks = {"count": 0, "enum": ''}
@@ -157,9 +213,6 @@ def format_errors(lang, font, failures):
             load_font_details(font, 'mfea', [formatted_detail])
         elif "No exemplar glyphs were defined" in failure:
             continue
-            #collected = ["   gflang", "missing orthography data"]
-        #if "Shaperglot Error":
-        #    collected[fontname]["Shaperglot"] = "Shaperglot error"'''
 
 
     if omarks["count"] != 0:
@@ -176,6 +229,7 @@ def format_errors(lang, font, failures):
     return(collected)
 
 
+# generate summary files for reporting tool
 def lang_summary(results):
     tag_data = []
     for lang in results:
@@ -186,17 +240,36 @@ def lang_summary(results):
                 formatted_err = format_errors(lang, font[0], errors)
                 tag_data.append(formatted_err)
    
-    json.dump(tag_data, summary, indent = 1)
+    keyList1 = ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
+    keyList2 = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+
+    h1_fonts = [d for d in tag_data if d['font'][0] in keyList1]
+    json.dump(h1_fonts, sliced1, indent=1)
+
+    h2_fonts = [d for d in tag_data if d['font'][0] in keyList2]
+    json.dump(h2_fonts, sliced2, indent=1)
+
+
+    #json.dump(tag_data, summary, indent = 1)
     tally_details(font_details)
+    family_summary(font_details)
+
     json.dump(font_details, overview, indent = 1)
- 
+    json.dump(family_details, family_overview, indent=1)
+
+    
 
 def main(results):
     print("processing . . .")
     lang_summary(results)
 
-    summary.close()
+    sliced1.close()
+    sliced2.close()
+
+    #summary.close()
     overview.close()
+    family_overview.close()
     print("Summary files have been generated")
 
 
@@ -208,7 +281,6 @@ if __name__ == '__main__':
     if not in_file.is_file():
         sys.exit("Input file [" + args.infile + "] does not exists")
     with open(args.infile, 'r') as file:
-        #results = yaml.safe_load(file)
         results = json.load(file)
         main(results)
     file.close()
