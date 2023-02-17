@@ -38,6 +38,9 @@ Output:
 ./docs/data/afr_font_overview.json
 ./docs/data/afr_lang_summary_1.json.gz
 ./docs/data/afr_lang_summary_2.json.jz
+./docs/data/glyph_coverage.json
+./docs/data/glyph_set.json
+./docs/data/required_ot_lang_tags.txt
 ```
 
 7. Test the results with a local webserver.
@@ -54,7 +57,7 @@ Open a browser tab go to [http://localhost:8000/index.html](http://localhost:800
 # Scripts
 `summarize.py` is a script that process raw shaperglot results into a handful of reports. These include a family level summary, a font level summary, and splits the language tag results into two files.
 
-`prep_reports.sh` is a shell script that runs `summarize.py` zips the language tag result files and placed them in the appropriate directory.
+`prep_reports.sh` is a shell script that runs `summarize.py`, `coverage-analysis.py`, `ottag-analysis.py` and zips the language tag result files and places everything in the appropriate directory.
 
 # Data Sets
 iso639-3-afr-all.txt which contains all language tags for African Languages irrespective of script. 
