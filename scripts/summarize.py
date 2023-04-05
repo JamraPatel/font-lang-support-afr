@@ -3,7 +3,7 @@ from pathlib import Path
 import yaml
 import json
 import argparse
-
+import copy
 
 
 #summary = open("afr_lang_summary.json", "w", encoding='utf8')
@@ -253,7 +253,8 @@ def lang_summary(results):
 
     #json.dump(tag_data, summary, indent = 1)
     tally_details(font_details)
-    family_summary(font_details)
+    data_temp = copy.deepcopy(font_details)
+    family_summary(data_temp)
 
     json.dump(font_details, overview, indent = 1)
     json.dump(family_details, family_overview, indent=1)
